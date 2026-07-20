@@ -44,6 +44,50 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Initial Setup ---
   let selectedTour = null;
 
+  // --- Hero Slideshow ---
+  const heroBg = document.getElementById('hero-bg');
+  const heroImages = [
+    'hero-images/agadir-1.jpg',
+    'hero-images/agadir-2.jpg',
+    'hero-images/agadir-3.avif',
+    'hero-images/agadir-4.jpg',
+    'hero-images/agadir-5.webp',
+    'hero-images/agadir-6.jpg',
+    'hero-images/agadir-7.jpg'
+  ];
+
+  if (heroBg && heroImages.length > 0) {
+    const layer1 = document.createElement('div');
+    const layer2 = document.createElement('div');
+    
+    layer1.className = 'hero-bg-layer active';
+    layer2.className = 'hero-bg-layer';
+    
+    const overlayGrad = 'linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.95))';
+    
+    layer1.style.backgroundImage = `${overlayGrad}, url('${heroImages[0]}')`;
+    layer2.style.backgroundImage = `${overlayGrad}, url('${heroImages[1]}')`;
+    
+    heroBg.appendChild(layer1);
+    heroBg.appendChild(layer2);
+    
+    let activeLayer = layer1;
+    let nextLayer = layer2;
+    let imgIndex = 0;
+    
+    setInterval(() => {
+      imgIndex = (imgIndex + 1) % heroImages.length;
+      nextLayer.style.backgroundImage = `${overlayGrad}, url('${heroImages[imgIndex]}')`;
+      
+      nextLayer.style.opacity = '1';
+      activeLayer.style.opacity = '0';
+      
+      const temp = activeLayer;
+      activeLayer = nextLayer;
+      nextLayer = temp;
+    }, 5000);
+  }
+
   // Initialize Navbar Scroll styling
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
