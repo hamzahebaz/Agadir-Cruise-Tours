@@ -248,8 +248,16 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
 
-.logo span {
-  color: var(--primary);
+.logo-img {
+  height: 48px;
+  display: block;
+  object-fit: contain;
+}
+
+.footer-logo-img {
+  height: 52px;
+  display: block;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -617,10 +625,12 @@ h1, h2, h3, h4, h5, h6 {
 .table-wrapper {
   max-height: 500px;
   overflow-y: auto;
+  overflow-x: auto; /* Allow horizontal scrolling on mobile */
   border: 1px solid var(--border-color);
   border-radius: 1rem;
   background: var(--bg-main);
   box-shadow: var(--shadow-normal);
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS devices */
 }
 
 .schedule-table {
@@ -1627,10 +1637,56 @@ select.form-control {
     padding: 1rem 0;
   }
   .nav-links {
-    display: none; /* Hide on mobile by default */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1.5px solid var(--border-color);
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+  }
+  .nav-links.active {
+    display: flex !important;
+    animation: slideDownMenu 0.3s ease-out;
+  }
+  @keyframes slideDownMenu {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .nav-links li a {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    display: block;
+    width: 100%;
   }
   .nav-toggle {
     display: block;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+  .footer-brand {
+    align-items: center;
+  }
+  .footer-social-links {
+    justify-content: center;
   }
   .hero {
     min-height: auto;
@@ -1685,5 +1741,9 @@ select.form-control {
     flex-direction: column;
     gap: 1.5rem;
     align-items: stretch;
+  }
+  .reviews-summary-card {
+    padding: 1.5rem;
+    gap: 1.5rem;
   }
 }

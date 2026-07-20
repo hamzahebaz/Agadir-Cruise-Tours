@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile Navigation Toggle
   if (navToggle) {
     navToggle.addEventListener('click', () => {
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
       navLinks.classList.toggle('active');
     });
   }
@@ -65,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 768) {
-        navLinks.style.display = 'none';
         navLinks.classList.remove('active');
       }
     });
