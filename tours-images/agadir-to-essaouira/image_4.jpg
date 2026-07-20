@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agadir Cruise Tours - Shore Excursions for Cruise Passengers</title>
+    <meta name="description" content="Book authentic shore excursions in Agadir, Morocco. Paradise Valley, Sahara desert tours, camel rides, and more — designed for cruise passengers with guaranteed on-time return." />
+    <meta name="keywords" content="Agadir cruise tours, Agadir shore excursions, cruise excursions Agadir, Agadir port tours, Morocco cruise tours, Paradise Valley, Sahara desert tour Agadir" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://agadircruisetours.com/" />
+
+    <meta property="og:title" content="Agadir Cruise Tours - Shore Excursions for Cruise Passengers" />
+    <meta property="og:description" content="Book authentic shore excursions in Agadir, Morocco. Paradise Valley, Sahara desert tours, camel rides, and more — designed for cruise passengers with guaranteed on-time return." />
+    <meta property="og:url" content="https://agadircruisetours.com/" />
+    <meta property="og:image" content="https://agadircruisetours.com/og-image.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Agadir Cruise Tours" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Agadir Cruise Tours - Shore Excursions for Cruise Passengers" />
+    <meta name="twitter:description" content="Book authentic shore excursions in Agadir, Morocco. Paradise Valley, Sahara desert tours, camel rides, and more — designed for cruise passengers with guaranteed on-time return." />
+    <meta name="twitter:image" content="https://agadircruisetours.com/og-image.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }</style>
+
+  <script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-C7sWPej8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DlJkHwYf.css">
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
