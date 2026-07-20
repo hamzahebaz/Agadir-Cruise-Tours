@@ -319,13 +319,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section */
 .hero {
-  height: 100vh;
-  min-height: 700px;
+  min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 80px; /* Offset for fixed navbar */
+  padding-top: 100px; /* Offset for fixed navbar */
+  padding-bottom: 4rem;
 }
 
 .hero-bg {
@@ -1695,6 +1695,9 @@ select.form-control {
   .nav-toggle {
     display: block;
   }
+  .navbar .nav-actions .btn {
+    display: none; /* Hide book button inside navbar on mobile */
+  }
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1708,7 +1711,7 @@ select.form-control {
   }
   .hero {
     min-height: auto;
-    padding-top: 7rem;
+    padding-top: 11rem; /* Clear fixed header */
     padding-bottom: 4rem;
   }
   .hero h1 {
