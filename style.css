@@ -1709,6 +1709,9 @@ select.form-control {
   .footer-social-links {
     justify-content: center;
   }
+  .footer-column ul li {
+    justify-content: center;
+  }
   .hero {
     min-height: auto;
     padding-top: 11rem; /* Clear fixed header */
