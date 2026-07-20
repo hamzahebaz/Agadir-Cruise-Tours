@@ -249,13 +249,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo-img {
-  height: 48px;
+  height: 68px;
   display: block;
   object-fit: contain;
+  transition: height var(--transition-normal);
+}
+
+.navbar.scrolled .logo-img {
+  height: 54px;
 }
 
 .footer-logo-img {
-  height: 52px;
+  height: 64px;
   display: block;
   object-fit: contain;
 }
