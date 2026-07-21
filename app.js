@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const temp = activeLayer;
       activeLayer = nextLayer;
       nextLayer = temp;
-    }, 5000);
+    }, 6500);
   }
 
   // Initialize Navbar Scroll styling
