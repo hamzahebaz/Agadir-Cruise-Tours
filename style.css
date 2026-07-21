@@ -1770,4 +1770,14 @@ select.form-control {
     padding: 1.5rem;
     gap: 1.5rem;
   }
+  .contact-form-side,
+  .contact-card {
+    padding: 1.5rem;
+  }
+  .section-alt h1 {
+    font-size: 2.25rem !important;
+  }
+  .section-alt {
+    padding: 8rem 0 3rem 0 !important;
+  }
 }
