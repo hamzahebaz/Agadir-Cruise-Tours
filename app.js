@@ -667,6 +667,27 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('success-tour-title').textContent = tour.title;
         document.getElementById('success-email').textContent = email;
         
+        // Construct and open WhatsApp reservation message
+        const totalCost = tour.price * numPeople;
+        const message = `*New Reservation Request - Agadir Cruise Tours*
+
+👋 Hello Samia Tours, I'd like to book a tour:
+• *Tour:* ${tour.title}
+• *Name:* ${name}
+• *Email:* ${email}
+• *Phone:* ${phone}
+• *Date:* ${date}
+• *Cruise Ship:* ${cruiseShip}
+• *Passengers:* ${numPeople}
+• *Estimated Cost:* €${totalCost}.00
+• *Requests:* ${requests}
+
+Thank you!`;
+
+        const encodedText = encodeURIComponent(message);
+        const waUrl = `https://wa.me/212661444189?text=${encodedText}`;
+        window.open(waUrl, '_blank');
+
         // Toggle views
         bookingForm.style.display = 'none';
         successView.style.display = 'block';
