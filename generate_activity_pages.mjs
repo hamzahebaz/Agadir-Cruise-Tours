@@ -147,6 +147,7 @@ function getTemplate(activity) {
         <li><a href="../../tours.html">Tours</a></li>
         <li><a href="../../activities.html" class="active">Activities</a></li>
         <li><a href="../../cruises.html">Cruises</a></li>
+        <li><a href="../../blog.html">Blog</a></li>
         <li><a href="../../about.html">About</a></li>
         <li><a href="../../contact.html">Contact</a></li>
       </ul>
