@@ -2319,3 +2319,210 @@ select.form-control {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Cruise Showcase Styling */
+.cruise-showcase-section {
+  background: var(--bg-main);
+  padding: 6rem 0;
+}
+
+.cruise-tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.cruise-tabs {
+  display: flex;
+  background: rgba(15, 23, 42, 0.03);
+  padding: 0.4rem;
+  border-radius: 50px;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cruise-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.cruise-tab-btn {
+  border: none;
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.cruise-tab-btn:hover {
+  color: var(--secondary);
+}
+
+.cruise-tab-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.cruise-showcase-card {
+  display: grid;
+  grid-template-columns: 4.5fr 5.5fr;
+  background: var(--secondary);
+  color: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-normal);
+  align-items: stretch;
+  min-height: 480px;
+}
+
+.cruise-showcase-content {
+  padding: 4rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cruise-showcase-content h3 {
+  font-size: 2.5rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.showcase-divider {
+  width: 150px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.showcase-circle {
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--secondary);
+}
+
+.showcase-tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+}
+
+.showcase-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+}
+
+.showcase-meta-box {
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+}
+
+.showcase-meta-label {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  margin-right: 0.5rem;
+}
+
+.showcase-meta-val {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.cruise-showcase-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+}
+
+.cruise-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.showcase-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(15, 23, 42, 0.6);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.showcase-nav-btn:hover {
+  background: var(--primary);
+}
+
+.showcase-nav-btn.prev {
+  left: 1.5rem;
+}
+
+.showcase-nav-btn.next {
+  right: 1.5rem;
+}
+
+.showcase-footer-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* Media Overrides for Cruise Showcase */
+@media (max-width: 992px) {
+  .cruise-showcase-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .cruise-showcase-content {
+    padding: 3rem 2rem;
+  }
+  .cruise-showcase-image-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 600px) {
+  .cruise-showcase-content h3 {
+    font-size: 2rem;
+  }
+  .showcase-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+}

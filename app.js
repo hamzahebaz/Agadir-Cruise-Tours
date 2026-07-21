@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isTour = tours.some(t => t.id === item.id);
       const actionButton = isTour 
         ? `<a href="tour/${item.slug}/" class="btn btn-secondary">View Excursion</a>`
-        : `<button class="btn btn-secondary btn-card-details" data-id="${item.id}">View Details</button>`;
+        : `<a href="activity/${item.slug}/" class="btn btn-secondary">View Details</a>`;
 
       card.innerHTML = `
         <div class="card-image-wrapper">
@@ -176,13 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.appendChild(card);
     });
 
-    // Attach Details Button Handlers
-    container.querySelectorAll('.btn-card-details').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const id = parseInt(e.target.getAttribute('data-id'));
-        openDetails(id);
-      });
-    });
+    // Attach Details Button Handlers (no longer needed since they are links, but we keep it empty or remove it)
   }
 
   // --- Render Cruise Schedule Table ---
@@ -793,6 +787,116 @@ Thank you!`;
     renderGrid(activitiesGrid, activities);
   }
 
+  // --- Cruise Showcase Interactive Logic ---
+  function initCruiseShowcase() {
+    const tabsList = document.getElementById('cruise-tabs-list');
+    if (!tabsList) return;
+    
+    const tabs = tabsList.querySelectorAll('.cruise-tab-btn');
+    const shipName = document.getElementById('showcase-ship-name');
+    const shipTagline = document.getElementById('showcase-ship-tagline');
+    const shipDesc = document.getElementById('showcase-ship-desc');
+    const shipType = document.getElementById('showcase-ship-type');
+    const shipLink = document.getElementById('showcase-ship-link');
+    const shipImg = document.getElementById('showcase-ship-img');
+    const prevBtn = document.getElementById('showcase-prev');
+    const nextBtn = document.getElementById('showcase-next');
+    
+    const shipsData = [
+      {
+        name: "Oceania Allura",
+        tagline: "The ultimate luxury explorer",
+        desc: "Experience the ultimate luxury at sea. Oceania Allura combines refined style with warm, personal service and fine dining, making it the perfect gateway to Agadir's wonders.",
+        type: "Premium Boutique, Mid-sized",
+        img: "cruises-images/Oceania-Allura.webp"
+      },
+      {
+        name: "Crystal Serenity",
+        tagline: "Enriched luxury & modern elegance",
+        desc: "Boasting exceptional passenger space and personalized service, Crystal Serenity brings a world of sophisticated refinement right to the shores of Agadir.",
+        type: "Luxury Cruise Ship, Spacious",
+        img: "cruises-images/Crystal-Serenity.jpg"
+      },
+      {
+        name: "Amera",
+        tagline: "Cozy explorer & classic charm",
+        desc: "Phoenix Reisen's Amera offers a cozy, intimate feel with classic style, welcoming German-speaking and international cruise travelers to the beautiful port of Agadir.",
+        type: "Classic Cruise Ship, Intimate",
+        img: "cruises-images/Amera.webp"
+      },
+      {
+        name: "Azura",
+        tagline: "The modern family-friendly giant",
+        desc: "P&O Cruises' Azura is one of the largest ships in their fleet, bringing a lively atmosphere, family-friendly fun, and spectacular entertainment options to the Atlantic.",
+        type: "Large Family Resort Ship",
+        img: "cruises-images/Azura.webp"
+      },
+      {
+        name: "Norwegian Star",
+        tagline: "Freestyle cruising & flexibility",
+        desc: "Norwegian Star offers the ultimate freedom and flexibility of freestyle cruising, letting you shape your perfect shore excursion day in Agadir without strict timelines.",
+        type: "Lively Resort Cruise Ship",
+        img: "cruises-images/Norwegian-Star.webp"
+      },
+      {
+        name: "Amadea",
+        tagline: "The luxurious first-class flagship",
+        desc: "The MS Amadea is Phoenix Reisen's elegant flagship, offering first-class comfort, exceptional privacy, and highly personalized service for premium voyages.",
+        type: "Elegant Flagship, Premium Class",
+        img: "cruises-images/Amadea.jpg"
+      }
+    ];
+    
+    let currentIndex = 0;
+    
+    const updateShowcase = (index) => {
+      currentIndex = index;
+      const data = shipsData[currentIndex];
+      
+      // Update Active Tab
+      tabs.forEach((tab, idx) => {
+        if (idx === currentIndex) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+      
+      // Fade out image
+      shipImg.style.opacity = '0';
+      
+      setTimeout(() => {
+        shipName.textContent = data.name;
+        shipTagline.textContent = data.tagline;
+        shipDesc.textContent = data.desc;
+        shipType.textContent = data.type;
+        shipImg.src = data.img;
+        shipImg.alt = data.name + " Cruise Ship";
+        shipLink.href = `cruises.html?ship=${encodeURIComponent(data.name)}`;
+        
+        // Fade in image
+        shipImg.style.opacity = '1';
+      }, 300);
+    };
+    
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
+        updateShowcase(idx);
+      });
+    });
+    
+    prevBtn.addEventListener('click', () => {
+      let idx = currentIndex - 1;
+      if (idx < 0) idx = shipsData.length - 1;
+      updateShowcase(idx);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      let idx = (currentIndex + 1) % shipsData.length;
+      updateShowcase(idx);
+    });
+  }
+
   // Render tours in the homepage slider track
   const toursSliderTrack = document.getElementById('tours-slider-track');
   if (toursSliderTrack) {
@@ -800,8 +904,22 @@ Thank you!`;
     initToursSlider();
   }
   
+  // Initialize Cruise Showcase
+  initCruiseShowcase();
+  
   // Render cruise list on cruises.html or home page if present
-  renderSchedules();
+  let initialShipQuery = '';
+  if (window.location.pathname.includes('cruises.html')) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const shipParam = urlParams.get('ship');
+    if (shipParam) {
+      initialShipQuery = shipParam;
+      if (shipSearch) {
+        shipSearch.value = shipParam;
+      }
+    }
+  }
+  renderSchedules(initialShipQuery);
   
   // Render reviews if present
   renderReviews();
