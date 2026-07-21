@@ -249,11 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </span>
         </td>
         <td data-label="Passenger Capacity" class="passenger-count">${parseInt(item.passengers).toLocaleString()} pax</td>
-        <td data-label="Action">
-          <a href="contact.html?ship=${encodeURIComponent(item.ship)}&date=${item.year}-${getMonthNumber(item.month)}-${getDateNumber(item.day)}" class="btn btn-secondary btn-schedule-book">
-            Book Match
-          </a>
-        </td>
       `;
       scheduleTbody.appendChild(row);
     });
