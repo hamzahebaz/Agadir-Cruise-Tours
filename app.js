@@ -997,6 +997,34 @@ Thank you!`;
   // Initialize Cruise Showcase
   initCruiseShowcase();
   
+  // --- Render Home Page Cruise Schedule ---
+  function renderHomeSchedule() {
+    const homeScheduleTbody = document.getElementById('home-schedule-tbody');
+    if (!homeScheduleTbody) return;
+    homeScheduleTbody.innerHTML = '';
+    
+    // Select first 5 upcoming cruises from the cruises list
+    const upcomingCruises = cruises.slice(0, 5);
+    
+    upcomingCruises.forEach(item => {
+      const row = document.createElement('tr');
+      const arrivalDateStr = `${item.day} ${item.month} ${item.year}`;
+      
+      row.innerHTML = `
+        <td style="font-weight: 600; color: var(--primary);">${arrivalDateStr}</td>
+        <td>
+          <div style="font-weight: 700; color: var(--secondary);">${item.ship}</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">${item.cruiseLine}</div>
+        </td>
+        <td>${item.times}</td>
+        <td>
+          <a href="cruises.html?ship=${encodeURIComponent(item.ship)}" class="btn btn-secondary btn-sm" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Book Excursion</a>
+        </td>
+      `;
+      homeScheduleTbody.appendChild(row);
+    });
+  }
+
   // Render cruise list on cruises.html or home page if present
   let initialShipQuery = '';
   if (window.location.pathname.includes('cruises.html')) {
@@ -1010,6 +1038,9 @@ Thank you!`;
     }
   }
   renderSchedules(initialShipQuery);
+  
+  // Render home page schedule if container is present
+  renderHomeSchedule();
   
   // Render reviews if present
   renderReviews();
