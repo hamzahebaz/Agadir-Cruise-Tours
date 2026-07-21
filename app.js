@@ -711,10 +711,65 @@ Thank you!`;
   if (modalDetailsBookBtn) {
     modalDetailsBookBtn.addEventListener('click', () => {
       if (selectedTour) {
-        // Redirect to contact page with pre-filled parameter
-        window.location.href = `contact.html?tour=${selectedTour.id}`;
+        // Redirect to tour/activity single page
+        const isTour = tours.some(t => t.id === selectedTour.id);
+        window.location.href = isTour 
+          ? `tour/${selectedTour.slug}/` 
+          : `activity/${selectedTour.slug}/`;
       }
     });
+  }
+
+  // --- Contact Form Logic ---
+  const contactForm = document.getElementById('contact-form');
+  const contactSuccessView = document.getElementById('contact-success-view');
+  const contactSuccessCloseBtn = document.getElementById('contact-success-close-btn');
+
+  function initContactForm() {
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email').value;
+      const phone = document.getElementById('contact-phone').value;
+      const subject = document.getElementById('contact-subject').value;
+      const messageText = document.getElementById('contact-message').value;
+
+      const message = `*New Contact Inquiry - Agadir Cruise Tours*
+
+👋 Hello Samia Tours, I have an inquiry:
+• *Name:* ${name}
+• *Email:* ${email}
+• *Phone:* ${phone}
+• *Subject:* ${subject}
+• *Message:* ${messageText}
+
+Thank you!`;
+
+      const encodedText = encodeURIComponent(message);
+      const waUrl = `https://wa.me/212661444189?text=${encodedText}`;
+      window.open(waUrl, '_blank');
+
+      // Toggle views
+      contactForm.style.display = 'none';
+      if (contactSuccessView) {
+        contactSuccessView.style.display = 'block';
+      }
+      lucide.createIcons();
+    });
+
+    if (contactSuccessCloseBtn) {
+      contactSuccessCloseBtn.addEventListener('click', () => {
+        contactForm.reset();
+        contactForm.style.display = 'block';
+        if (contactSuccessView) {
+          contactSuccessView.style.display = 'none';
+        }
+        lucide.createIcons();
+      });
+    }
   }
 
   // Tours Slider Control logic
@@ -959,8 +1014,9 @@ Thank you!`;
   // Render reviews if present
   renderReviews();
   
-  // Initialize Booking Form
+  // Initialize Booking & Contact Forms
   initBookingForm();
+  initContactForm();
 
   // Highlight active page in navbar based on location path
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';

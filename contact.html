@@ -91,8 +91,8 @@
   <!-- Page Header -->
   <section class="page-hero" style="background-image: url('hero-images/agadir-7.jpg');">
     <div class="container">
-      <h1>Book Your Excursion</h1>
-      <p>Request your booking using the form below. No payment required until the day of the tour. We respond within 12 hours.</p>
+      <h1>Contact Us</h1>
+      <p>Have a question or custom excursion request? Reach out to Samia Tours. We are happy to help you plan your perfect visit to Agadir.</p>
     </div>
   </section>
 
@@ -100,88 +100,59 @@
   <section class="section" id="contact" style="padding: 5rem 0;">
     <div class="container">
       <div class="contact-grid">
-        <!-- Booking Form side -->
+        <!-- Contact Form side -->
         <div class="contact-form-side glass-panel">
-          <form id="booking-form">
+          <form id="contact-form">
             <div class="form-grid">
-              <div class="form-group full-width">
-                <label for="book-tour">Select Excursion / Activity</label>
-                <select id="book-tour" class="form-control" required>
-                  <!-- Populated by app.js -->
+              <div class="form-group">
+                <label for="contact-name">Full Name</label>
+                <input type="text" id="contact-name" class="form-control" placeholder="Your name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input type="email" id="contact-email" class="form-control" placeholder="your@email.com" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-phone">Phone / WhatsApp Number</label>
+                <input type="tel" id="contact-phone" class="form-control" placeholder="+1 234 567 8900" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-subject">Subject</label>
+                <select id="contact-subject" class="form-control" required>
+                  <option value="">Select a subject</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Custom Excursion">Custom Excursion / Group Tour</option>
+                  <option value="Cruise Excursion Question">Cruise Excursion Question</option>
+                  <option value="Group Discount Request">Group Discount Request</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               
-              <div class="form-group">
-                <label for="book-name">Full Name</label>
-                <input type="text" id="book-name" class="form-control" placeholder="Booking name" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="book-email">Email Address</label>
-                <input type="email" id="book-email" class="form-control" placeholder="example@email.com" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="book-phone">Phone Number (WhatsApp preferred)</label>
-                <input type="tel" id="book-phone" class="form-control" placeholder="+1 234 567 8900" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="book-date">Excursion Date</label>
-                <input type="date" id="book-date" class="form-control" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="book-cruise">Cruise Ship (Optional)</label>
-                <select id="book-cruise" class="form-control">
-                  <option value="">Select your cruise ship</option>
-                  <!-- Populated by app.js -->
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="book-passengers">Number of Passengers</label>
-                <input type="number" id="book-passengers" class="form-control" min="1" max="50" value="2" required>
-              </div>
-              
               <div class="form-group full-width">
-                <label for="book-requests">Special Requests / Requirements</label>
-                <textarea id="book-requests" class="form-control" rows="3" placeholder="Dietary restrictions, pickup details, cruise details, etc."></textarea>
+                <label for="contact-message">Your Message</label>
+                <textarea id="contact-message" class="form-control" rows="5" placeholder="Write your message here... Include your cruise ship name or excursion date if applicable." required></textarea>
               </div>
             </div>
             
-            <!-- Summary Box -->
-            <div class="booking-summary-box">
-              <div class="summary-row">
-                <span>Base price per person:</span>
-                <span id="summary-base-price">€0.00</span>
-              </div>
-              <div class="summary-row">
-                <span>Total passengers:</span>
-                <span id="summary-passengers">x2</span>
-              </div>
-              <div class="summary-row summary-total">
-                <span>Estimated Total:</span>
-                <span id="summary-total-cost">€0.00</span>
-              </div>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">
-              Submit Reservation Request <i data-lucide="send" size="18"></i>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+              Send Message on WhatsApp <i data-lucide="message-circle" size="18"></i>
             </button>
           </form>
           
-          <!-- Booking Success View -->
-          <div class="booking-success-view" id="booking-success-view" style="display: none;">
+          <!-- Contact Success View -->
+          <div class="booking-success-view" id="contact-success-view" style="display: none;">
             <div class="success-icon-wrapper">
               <i data-lucide="check" size="40"></i>
             </div>
-            <h3>Reservation Request Submitted!</h3>
-            <p>We have successfully received your reservation request for <strong id="success-tour-title"></strong>.</p>
+            <h3>Inquiry Submitted!</h3>
+            <p>Your message has been formatted and sent via WhatsApp to Samia Tours.</p>
             <p style="font-size: 0.9rem; color: var(--text-muted);">
-              A confirmation email and WhatsApp message will be sent to you at <strong id="success-email"></strong> within 12 hours with tour times and directions.
+              We have successfully received your inquiry. We will read your message and respond directly to your WhatsApp or Email as soon as possible.
             </p>
-            <button class="btn btn-secondary" id="success-close-btn" style="margin-top: 1rem;">Make Another Booking</button>
+            <button class="btn btn-secondary" id="contact-success-close-btn" style="margin-top: 1rem;">Send Another Message</button>
           </div>
         </div>
         
