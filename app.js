@@ -180,6 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Render Cruise Schedule Table ---
+  let currentSchedulePage = 1;
+  const itemsPerPage = 10;
+
   function renderSchedules(searchQuery = '', filterMonth = '') {
     if (!scheduleTbody) return;
     scheduleTbody.innerHTML = '';
@@ -197,6 +200,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchSearch && matchMonth;
     });
 
+    const totalPages = Math.ceil(filteredCruises.length / itemsPerPage);
+    if (currentSchedulePage > totalPages) {
+      currentSchedulePage = Math.max(1, totalPages);
+    }
+
+    const paginationContainer = document.getElementById('schedule-pagination');
+    if (paginationContainer) {
+      paginationContainer.innerHTML = '';
+    }
+
     if (filteredCruises.length === 0) {
       scheduleTbody.innerHTML = `
         <tr>
@@ -210,7 +223,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    filteredCruises.forEach(item => {
+    // Slice for pagination
+    const paginatedCruises = filteredCruises.slice(
+      (currentSchedulePage - 1) * itemsPerPage,
+      currentSchedulePage * itemsPerPage
+    );
+
+    paginatedCruises.forEach(item => {
       const row = document.createElement('tr');
       const arrivalTimeStr = item.times.replace('a ', 'Arrival ').replace(' d ', ', Departure ').replace(/(\d{2})(\d{2})/g, '$1:$2');
       
@@ -239,18 +258,66 @@ document.addEventListener('DOMContentLoaded', () => {
       scheduleTbody.appendChild(row);
     });
 
+    // Render pagination controls if container is present and there are multiple pages
+    if (paginationContainer && totalPages > 1) {
+      // Prev Button
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'pagination-btn pagination-btn-arrow';
+      prevBtn.innerHTML = '<i data-lucide="chevron-left" size="16"></i> Prev';
+      prevBtn.disabled = currentSchedulePage === 1;
+      prevBtn.addEventListener('click', () => {
+        if (currentSchedulePage > 1) {
+          currentSchedulePage--;
+          renderSchedules(searchQuery, filterMonth);
+          window.scrollTo({ top: document.getElementById('cruises').offsetTop - 100, behavior: 'smooth' });
+        }
+      });
+      paginationContainer.appendChild(prevBtn);
+
+      // Page Numbers
+      for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `pagination-btn ${i === currentSchedulePage ? 'active' : ''}`;
+        pageBtn.innerText = i;
+        pageBtn.addEventListener('click', () => {
+          if (currentSchedulePage !== i) {
+            currentSchedulePage = i;
+            renderSchedules(searchQuery, filterMonth);
+            window.scrollTo({ top: document.getElementById('cruises').offsetTop - 100, behavior: 'smooth' });
+          }
+        });
+        paginationContainer.appendChild(pageBtn);
+      }
+
+      // Next Button
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'pagination-btn pagination-btn-arrow';
+      nextBtn.innerHTML = 'Next <i data-lucide="chevron-right" size="16"></i>';
+      nextBtn.disabled = currentSchedulePage === totalPages;
+      nextBtn.addEventListener('click', () => {
+        if (currentSchedulePage < totalPages) {
+          currentSchedulePage++;
+          renderSchedules(searchQuery, filterMonth);
+          window.scrollTo({ top: document.getElementById('cruises').offsetTop - 100, behavior: 'smooth' });
+        }
+      });
+      paginationContainer.appendChild(nextBtn);
+    }
+
     lucide.createIcons();
   }
 
   // Schedule filters event listeners
   if (shipSearch) {
     shipSearch.addEventListener('input', (e) => {
+      currentSchedulePage = 1;
       renderSchedules(e.target.value, monthFilter.value);
     });
   }
 
   if (monthFilter) {
     monthFilter.addEventListener('change', (e) => {
+      currentSchedulePage = 1;
       renderSchedules(shipSearch.value, e.target.value);
     });
   }
@@ -805,19 +872,15 @@ Thank you!`;
     };
     
     prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-      }
+      currentIndex = Math.max(0, currentIndex - getVisibleCount());
+      updateSlider();
     });
     
     nextBtn.addEventListener('click', () => {
       const cards = track.querySelectorAll('.card');
       const maxSlides = cards.length - getVisibleCount();
-      if (currentIndex < maxSlides) {
-        currentIndex++;
-        updateSlider();
-      }
+      currentIndex = Math.min(maxSlides, currentIndex + getVisibleCount());
+      updateSlider();
     });
     
     window.addEventListener('resize', () => {
