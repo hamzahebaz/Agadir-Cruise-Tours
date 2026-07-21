@@ -363,8 +363,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(29, 78, 216, 0.08);
-  color: var(--primary);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
   font-family: var(--font-display);
@@ -378,18 +379,18 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   margin-bottom: 1.5rem;
   font-weight: 800;
-  color: var(--secondary);
+  color: #ffffff;
 }
 
 .hero h1 span {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-description {
   font-size: 1.25rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 2.5rem;
   max-width: 600px;
 }
@@ -397,6 +398,20 @@ h1, h2, h3, h4, h5, h6 {
 .hero-buttons {
   display: flex;
   gap: 1.2rem;
+}
+
+.hero .badge-text h4 {
+  color: #ffffff;
+}
+
+.hero .badge-text p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero .badge-icon {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
 /* Quick Info / Trust Badges */
