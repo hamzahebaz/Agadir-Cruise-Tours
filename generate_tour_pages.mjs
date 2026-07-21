@@ -176,6 +176,13 @@ function getTemplate(tour) {
           </div>
           
           <div class="detail-block">
+            <h2>Tour Gallery</h2>
+            <div class="tour-gallery-grid">
+              ${galleryHTML}
+            </div>
+          </div>
+          
+          <div class="detail-block">
             <h2>Tour Highlights</h2>
             <ul class="highlights-custom-list">
               ${highlightsHTML}
@@ -226,13 +233,6 @@ function getTemplate(tour) {
             <ul class="important-custom-list">
               ${importantInfoHTML}
             </ul>
-          </div>
-          
-          <div class="detail-block">
-            <h2>Tour Gallery</h2>
-            <div class="tour-gallery-grid">
-              ${galleryHTML}
-            </div>
           </div>
           
         </div>
