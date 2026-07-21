@@ -403,6 +403,18 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1.2rem;
 }
 
+.hero-buttons .btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-buttons .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
 .hero .badge-text h4 {
   color: #ffffff;
 }
