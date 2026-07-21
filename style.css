@@ -265,6 +265,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 64px;
   display: block;
   object-fit: contain;
+  margin: 0 auto;
 }
 
 .nav-links {
@@ -2965,4 +2966,63 @@ select.form-control {
   padding: 0 1.25rem;
   border-radius: 20px;
   width: auto;
+}
+
+/* Responsive Schedule Table styling for Mobile */
+@media (max-width: 768px) {
+  .schedule-table thead, .home-schedule-table thead {
+    display: none;
+  }
+  .schedule-table tr, .home-schedule-table tr {
+    display: block;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .schedule-table td, .home-schedule-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+    text-align: right;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .schedule-table td:last-child, .home-schedule-table td:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  .schedule-table td::before, .home-schedule-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--secondary);
+    text-align: left;
+    font-family: var(--font-display);
+    padding-right: 0.5rem;
+  }
+  .schedule-table .btn, .home-schedule-table .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Enforced Center alignment for Mobile Footer */
+@media (max-width: 768px) {
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-column ul {
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
 }

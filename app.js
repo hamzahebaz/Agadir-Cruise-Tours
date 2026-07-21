@@ -234,22 +234,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const arrivalTimeStr = item.times.replace('a ', 'Arrival ').replace(' d ', ', Departure ').replace(/(\d{2})(\d{2})/g, '$1:$2');
       
       row.innerHTML = `
-        <td style="font-weight: 600; white-space: nowrap;">
+        <td data-label="Arrival Date" style="font-weight: 600; white-space: nowrap;">
           <div style="font-size: 0.95rem; color: var(--primary);">${item.day}</div>
           <div style="font-size: 0.8rem; color: var(--text-muted);">${item.month} ${item.year}</div>
         </td>
-        <td>
+        <td data-label="Cruise Ship">
           <div class="ship-name">${item.ship}</div>
           <div class="ship-line">${item.cruiseLine}</div>
         </td>
-        <td>
+        <td data-label="Times in Port">
           <span class="time-badge">
             <i data-lucide="clock" size="14"></i>
             ${arrivalTimeStr}
           </span>
         </td>
-        <td class="passenger-count">${parseInt(item.passengers).toLocaleString()} pax</td>
-        <td>
+        <td data-label="Passenger Capacity" class="passenger-count">${parseInt(item.passengers).toLocaleString()} pax</td>
+        <td data-label="Action">
           <a href="contact.html?ship=${encodeURIComponent(item.ship)}&date=${item.year}-${getMonthNumber(item.month)}-${getDateNumber(item.day)}" class="btn btn-secondary btn-schedule-book">
             Book Match
           </a>
@@ -893,6 +893,59 @@ Thank you!`;
     setTimeout(updateSlider, 200);
   }
 
+  // Activities Slider Control logic
+  function initActivitiesSlider() {
+    const track = document.getElementById('activities-slider-track');
+    const prevBtn = document.getElementById('activities-prev');
+    const nextBtn = document.getElementById('activities-next');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    let currentIndex = 0;
+    
+    const getVisibleCount = () => {
+      const width = window.innerWidth;
+      if (width <= 600) return 1;
+      if (width <= 1200) return 2;
+      return 3;
+    };
+
+    const updateSlider = () => {
+      const cards = track.querySelectorAll('.card');
+      if (cards.length === 0) return;
+      
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+      const step = cardWidth + gap;
+      
+      track.style.transform = `translateX(-${currentIndex * step}px)`;
+      
+      const maxSlides = cards.length - getVisibleCount();
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxSlides || maxSlides <= 0;
+    };
+    
+    prevBtn.addEventListener('click', () => {
+      currentIndex = Math.max(0, currentIndex - getVisibleCount());
+      updateSlider();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      const cards = track.querySelectorAll('.card');
+      const maxSlides = cards.length - getVisibleCount();
+      currentIndex = Math.min(maxSlides, currentIndex + getVisibleCount());
+      updateSlider();
+    });
+    
+    window.addEventListener('resize', () => {
+      const cards = track.querySelectorAll('.card');
+      currentIndex = Math.min(currentIndex, Math.max(0, cards.length - getVisibleCount()));
+      updateSlider();
+    });
+    
+    setTimeout(updateSlider, 200);
+  }
+
   // --- Run Initializations ---
   
   // Render full tours on tours.html
@@ -1074,13 +1127,13 @@ Thank you!`;
       const arrivalDateStr = `${item.day} ${item.month} ${item.year}`;
       
       row.innerHTML = `
-        <td style="font-weight: 600; color: var(--primary);">${arrivalDateStr}</td>
-        <td>
+        <td data-label="Arrival Date" style="font-weight: 600; color: var(--primary);">${arrivalDateStr}</td>
+        <td data-label="Cruise Ship">
           <div style="font-weight: 700; color: var(--secondary);">${item.ship}</div>
           <div style="font-size: 0.8rem; color: var(--text-muted);">${item.cruiseLine}</div>
         </td>
-        <td>${item.times}</td>
-        <td>
+        <td data-label="Times in Port">${item.times}</td>
+        <td data-label="Excursions">
           <a href="cruises.html?ship=${encodeURIComponent(item.ship)}" class="btn btn-secondary btn-sm" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Book Excursion</a>
         </td>
       `;
@@ -1107,6 +1160,9 @@ Thank you!`;
   
   // Render reviews if present
   renderReviews();
+
+  // Initialize Activities Slider if container is present
+  initActivitiesSlider();
   
   // Initialize Booking & Contact Forms
   initBookingForm();

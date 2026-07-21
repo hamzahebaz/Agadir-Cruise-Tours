@@ -297,98 +297,183 @@
   </section>
 
   <!-- Popular Agadir Activities Section -->
+  <!-- Popular Agadir Activities Section (Slider Layout) -->
   <section class="section popular-activities-section" id="popular-activities" style="padding: 6rem 0; background: #ffffff;">
-    <div class="container">
-      <div class="section-title">
-        <h2>Popular Agadir Activities</h2>
-        <p>Short on time? Discover local Moroccan culture, ride camels at sunset, or pamper yourself in a traditional spa during your port stay.</p>
+    <div class="container slider-container-wrapper">
+      <div class="slider-header-row">
+        <div class="slider-titles">
+          <h2>Popular Agadir Activities</h2>
+          <p>Short on time? Discover local Moroccan culture, ride camels at sunset, or pamper yourself in a traditional spa during your port stay.</p>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-arrow prev-btn" id="activities-prev" aria-label="Previous Activities">
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <button class="slider-arrow next-btn" id="activities-next" aria-label="Next Activities">
+            <i data-lucide="chevron-right"></i>
+          </button>
+        </div>
       </div>
 
-      <div class="listings-grid">
-        <!-- Desert Quad Adventure -->
-        <div class="card">
-          <div class="card-image-wrapper">
-            <img src="activities-images/desert-quad-adventure/image_1.jpg" alt="Desert Quad Adventure" class="card-image" loading="lazy">
-            <span class="card-badge">Adventure</span>
-          </div>
-          <div class="card-content">
-            <div class="card-header-meta">
-              <div class="card-meta-item">
-                <i data-lucide="clock" size="14"></i>
-                <span>4 Hours</span>
-              </div>
-              <div class="card-rating">
-                <i data-lucide="star" size="12" fill="#f59e0b"></i>
-                <span>4.8 (189)</span>
-              </div>
-            </div>
-            <h3>From Agadir Cruise: Desert Quad Adventure</h3>
-            <p class="card-description">Thrilling quad biking adventure from Agadir cruise port — ride dunes, Atlantic coast, and Berber villages. Mint tea included.</p>
-            <div class="card-footer">
-              <div class="card-price">
-                <span class="card-price-label">From</span>
-                <span class="card-price-value">€55</span>
-              </div>
-              <a href="activity/desert-quad-adventure/" class="btn btn-secondary">View Details</a>
-            </div>
+      <div class="slider-split-layout">
+        <!-- Left Side Promo Banner -->
+        <div class="slider-promo-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+          <div class="promo-card-content">
+            <h3>Agadir Local Activities</h3>
+            <p>Make the most of your port day with shorter, highly immersive local activities. Perfect for cruise passengers looking to explore Agadir's sights without full-day travel commitments.</p>
+            <a href="activities.html" class="btn btn-primary btn-light-text">Explore All Activities <i data-lucide="arrow-right" size="16"></i></a>
           </div>
         </div>
 
-        <!-- Hammam & Massage -->
-        <div class="card">
-          <div class="card-image-wrapper">
-            <img src="activities-images/hammam-massage-experience/image_1.jpg" alt="Traditional Moroccan Hammam & Massage" class="card-image" loading="lazy">
-            <span class="card-badge">Relaxation</span>
-          </div>
-          <div class="card-content">
-            <div class="card-header-meta">
-              <div class="card-meta-item">
-                <i data-lucide="clock" size="14"></i>
-                <span>2 Hours</span>
+        <!-- Slider Viewport -->
+        <div class="slider-viewport" id="activities-slider-viewport">
+          <div class="slider-track" id="activities-slider-track">
+            
+            <!-- Activity 1: Desert Quad Adventure -->
+            <div class="card">
+              <div class="card-image-wrapper">
+                <img src="activities-images/desert-quad-adventure/image_1.jpg" alt="Desert Quad Adventure" class="card-image" loading="lazy">
+                <span class="card-badge">Adventure</span>
               </div>
-              <div class="card-rating">
-                <i data-lucide="star" size="12" fill="#f59e0b"></i>
-                <span>4.9 (142)</span>
+              <div class="card-content">
+                <div class="card-header-meta">
+                  <div class="card-meta-item">
+                    <i data-lucide="clock" size="14"></i>
+                    <span>4 Hours</span>
+                  </div>
+                  <div class="card-rating">
+                    <i data-lucide="star" size="12" fill="#f59e0b"></i>
+                    <span>4.8 (189)</span>
+                  </div>
+                </div>
+                <h3>From Agadir Cruise: Desert Quad Adventure</h3>
+                <p class="card-description">Thrilling quad biking adventure from Agadir cruise port — ride dunes, Atlantic coast, and Berber villages. Mint tea included.</p>
+                <div class="card-footer">
+                  <div class="card-price">
+                    <span class="card-price-label">From</span>
+                    <span class="card-price-value">€55</span>
+                  </div>
+                  <a href="activity/desert-quad-adventure/" class="btn btn-secondary">View Details</a>
+                </div>
               </div>
             </div>
-            <h3>Traditional Moroccan Hammam & Massage in Agadir</h3>
-            <p class="card-description">Indulge in an authentic Moroccan hammam scrub followed by a relaxing argan oil massage. Includes private transfers.</p>
-            <div class="card-footer">
-              <div class="card-price">
-                <span class="card-price-label">From</span>
-                <span class="card-price-value">€30</span>
-              </div>
-              <a href="activity/hammam-massage-experience/" class="btn btn-secondary">View Details</a>
-            </div>
-          </div>
-        </div>
 
-        <!-- Camel Ride -->
-        <div class="card">
-          <div class="card-image-wrapper">
-            <img src="activities-images/camel-ride-flamingos-adventure/image_1.jpg" alt="Flamingo River Camel Ride" class="card-image" loading="lazy">
-            <span class="card-badge">Relaxation</span>
-          </div>
-          <div class="card-content">
-            <div class="card-header-meta">
-              <div class="card-meta-item">
-                <i data-lucide="clock" size="14"></i>
-                <span>2 Hours</span>
+            <!-- Activity 2: Hammam & Massage -->
+            <div class="card">
+              <div class="card-image-wrapper">
+                <img src="activities-images/agadir-massage-hammam-spa-with-transfer/image_1.jpg" alt="Traditional Moroccan Hammam & Massage" class="card-image" loading="lazy">
+                <span class="card-badge">Relaxation</span>
               </div>
-              <div class="card-rating">
-                <i data-lucide="star" size="12" fill="#f59e0b"></i>
-                <span>4.7 (95)</span>
+              <div class="card-content">
+                <div class="card-header-meta">
+                  <div class="card-meta-item">
+                    <i data-lucide="clock" size="14"></i>
+                    <span>2 Hours</span>
+                  </div>
+                  <div class="card-rating">
+                    <i data-lucide="star" size="12" fill="#f59e0b"></i>
+                    <span>4.9 (312)</span>
+                  </div>
+                </div>
+                <h3>Traditional Moroccan Hammam & Massage in Agadir</h3>
+                <p class="card-description">Indulge in an authentic Moroccan hammam scrub followed by a relaxing argan oil massage. Includes private transfers.</p>
+                <div class="card-footer">
+                  <div class="card-price">
+                    <span class="card-price-label">From</span>
+                    <span class="card-price-value">€43</span>
+                  </div>
+                  <a href="activity/hammam-massage-experience/" class="btn btn-secondary">View Details</a>
+                </div>
               </div>
             </div>
-            <h3>Camel Ride in Agadir with Mint Tea & BBQ Option</h3>
-            <p class="card-description">Ride a friendly camel along the scenic Souss River, look out for wild flamingos, and enjoy traditional mint tea and a tasty BBQ dinner.</p>
-            <div class="card-footer">
-              <div class="card-price">
-                <span class="card-price-label">From</span>
-                <span class="card-price-value">€20</span>
+
+            <!-- Activity 3: Camel Ride -->
+            <div class="card">
+              <div class="card-image-wrapper">
+                <img src="activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_1.jpg" alt="Flamingo River Camel Ride" class="card-image" loading="lazy">
+                <span class="card-badge">Relaxation</span>
               </div>
-              <a href="activity/camel-ride-flamingos-adventure/" class="btn btn-secondary">View Details</a>
+              <div class="card-content">
+                <div class="card-header-meta">
+                  <div class="card-meta-item">
+                    <i data-lucide="clock" size="14"></i>
+                    <span>2 Hours</span>
+                  </div>
+                  <div class="card-rating">
+                    <i data-lucide="star" size="12" fill="#f59e0b"></i>
+                    <span>4.7 (127)</span>
+                  </div>
+                </div>
+                <h3>Camel Ride in Agadir with Mint Tea & BBQ Option</h3>
+                <p class="card-description">Ride a friendly camel along the scenic Souss River, look out for wild flamingos, and enjoy traditional mint tea and a tasty BBQ dinner.</p>
+                <div class="card-footer">
+                  <div class="card-price">
+                    <span class="card-price-label">From</span>
+                    <span class="card-price-value">€20</span>
+                  </div>
+                  <a href="activity/camel-ride-flamingos-adventure/" class="btn btn-secondary">View Details</a>
+                </div>
+              </div>
             </div>
+
+            <!-- Activity 4: Souss River Horseback Ride -->
+            <div class="card">
+              <div class="card-image-wrapper">
+                <img src="activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_1.jpg" alt="Souss River Horseback Ride" class="card-image" loading="lazy">
+                <span class="card-badge">Relaxation</span>
+              </div>
+              <div class="card-content">
+                <div class="card-header-meta">
+                  <div class="card-meta-item">
+                    <i data-lucide="clock" size="14"></i>
+                    <span>2 Hours</span>
+                  </div>
+                  <div class="card-rating">
+                    <i data-lucide="star" size="12" fill="#f59e0b"></i>
+                    <span>4.7 (127)</span>
+                  </div>
+                </div>
+                <h3>Agadir: Horseback Ride along Souss River</h3>
+                <p class="card-description">Peaceful horseback ride through Agadir's eucalyptus forest, dunes, and Souss River with wild flamingos. Mint tea included.</p>
+                <div class="card-footer">
+                  <div class="card-price">
+                    <span class="card-price-label">From</span>
+                    <span class="card-price-value">€35</span>
+                  </div>
+                  <a href="activity/souss-river-horseback-ride/" class="btn btn-secondary">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity 5: Crocoparc Agadir -->
+            <div class="card">
+              <div class="card-image-wrapper">
+                <img src="activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_1.jpg" alt="Crocoparc Agadir" class="card-image" loading="lazy">
+                <span class="card-badge">Leisure</span>
+              </div>
+              <div class="card-content">
+                <div class="card-header-meta">
+                  <div class="card-meta-item">
+                    <i data-lucide="clock" size="14"></i>
+                    <span>3 Hours</span>
+                  </div>
+                  <div class="card-rating">
+                    <i data-lucide="star" size="12" fill="#f59e0b"></i>
+                    <span>4.8 (85)</span>
+                  </div>
+                </div>
+                <h3>Crocoparc Agadir: Crocodile Park Tour with Ticket</h3>
+                <p class="card-description">Explore the botanical gardens of Crocoparc Agadir and see Nile crocodiles in their natural habitat. Perfect for families.</p>
+                <div class="card-footer">
+                  <div class="card-price">
+                    <span class="card-price-label">From</span>
+                    <span class="card-price-value">€25</span>
+                  </div>
+                  <a href="activity/crocoparc-agadir-tour/" class="btn btn-secondary">View Details</a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
