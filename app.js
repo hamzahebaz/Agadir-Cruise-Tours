@@ -1071,7 +1071,7 @@ Thank you!`;
         shipType.textContent = data.type;
         shipImg.src = data.images[activeImageIndex];
         shipImg.alt = `${data.name} Cruise Ship (Photo ${activeImageIndex + 1})`;
-        shipLink.href = `cruises.html?ship=${encodeURIComponent(data.name)}`;
+        shipLink.href = `cruises?ship=${encodeURIComponent(data.name)}`;
         
         // Fade in image
         shipImg.style.opacity = '1';
@@ -1128,9 +1128,6 @@ Thank you!`;
           <div style="font-size: 0.8rem; color: var(--text-muted);">${item.cruiseLine}</div>
         </td>
         <td data-label="Times in Port">${item.times}</td>
-        <td data-label="Excursions">
-          <a href="cruises.html?ship=${encodeURIComponent(item.ship)}" class="btn btn-secondary btn-sm" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Book Excursion</a>
-        </td>
       `;
       homeScheduleTbody.appendChild(row);
     });
@@ -1138,7 +1135,7 @@ Thank you!`;
 
   // Render cruise list on cruises.html or home page if present
   let initialShipQuery = '';
-  if (window.location.pathname.includes('cruises.html')) {
+  if (window.location.pathname.includes('cruises')) {
     const urlParams = new URLSearchParams(window.location.search);
     const shipParam = urlParams.get('ship');
     if (shipParam) {
@@ -1163,10 +1160,10 @@ Thank you!`;
   initBookingForm();
   initContactForm();
 
-  // Highlight active page in navbar based on location path
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  // Highlight active page in navbar based on location path (supporting pretty extensionless urls)
+  const currentPath = (window.location.pathname.split('/').pop() || 'index').replace('.html', '');
   document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href');
+    const href = (a.getAttribute('href') || '').split('/').pop().replace('.html', '').split('?')[0];
     if (href === currentPath) {
       a.classList.add('active');
     } else {
