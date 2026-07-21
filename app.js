@@ -140,6 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
+      
+      const isTour = tours.some(t => t.id === item.id);
+      const actionButton = isTour 
+        ? `<a href="tour/${item.slug}/" class="btn btn-secondary">View Excursion</a>`
+        : `<button class="btn btn-secondary btn-card-details" data-id="${item.id}">View Details</button>`;
+
       card.innerHTML = `
         <div class="card-image-wrapper">
           <img src="${item.image}" alt="${item.title}" class="card-image" loading="lazy">
@@ -163,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="card-price-label">From</span>
               <span class="card-price-value">€${item.price}</span>
             </div>
-            <button class="btn btn-secondary btn-card-details" data-id="${item.id}">View Details</button>
+            ${actionButton}
           </div>
         </div>
       `;
@@ -717,6 +723,64 @@ Thank you!`;
     });
   }
 
+  // Tours Slider Control logic
+  function initToursSlider() {
+    const track = document.getElementById('tours-slider-track');
+    const prevBtn = document.getElementById('tours-prev');
+    const nextBtn = document.getElementById('tours-next');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    let currentIndex = 0;
+    
+    const getVisibleCount = () => {
+      const width = window.innerWidth;
+      if (width <= 600) return 1;
+      if (width <= 1200) return 2;
+      return 3;
+    };
+
+    const updateSlider = () => {
+      const cards = track.querySelectorAll('.card');
+      if (cards.length === 0) return;
+      
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+      const step = cardWidth + gap;
+      
+      track.style.transform = `translateX(-${currentIndex * step}px)`;
+      
+      const maxSlides = cards.length - getVisibleCount();
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxSlides || maxSlides <= 0;
+    };
+    
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      const cards = track.querySelectorAll('.card');
+      const maxSlides = cards.length - getVisibleCount();
+      if (currentIndex < maxSlides) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+    
+    window.addEventListener('resize', () => {
+      const cards = track.querySelectorAll('.card');
+      currentIndex = Math.min(currentIndex, Math.max(0, cards.length - getVisibleCount()));
+      updateSlider();
+    });
+    
+    // Slight delay to ensure elements are fully painted before getting dimensions
+    setTimeout(updateSlider, 200);
+  }
+
   // --- Run Initializations ---
   
   // Render full tours on tours.html
@@ -729,11 +793,11 @@ Thank you!`;
     renderGrid(activitiesGrid, activities);
   }
 
-  // Render top 3 featured excursions on index.html
-  if (featuredGrid) {
-    const topTours = tours.slice(0, 2);
-    const topActivities = activities.slice(0, 1);
-    renderGrid(featuredGrid, [...topTours, ...topActivities]);
+  // Render tours in the homepage slider track
+  const toursSliderTrack = document.getElementById('tours-slider-track');
+  if (toursSliderTrack) {
+    renderGrid(toursSliderTrack, tours);
+    initToursSlider();
   }
   
   // Render cruise list on cruises.html or home page if present

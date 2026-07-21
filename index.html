@@ -169,22 +169,40 @@
     </div>
   </section>
 
-  <!-- Featured Overview Section -->
-  <section class="section" id="featured-tours">
-    <div class="container">
-      <div class="section-title">
-        <h2>Popular Excursions & Activities</h2>
-        <p>A quick highlight of our most-booked excursions in Agadir. Check out all offerings on our dedicated pages.</p>
+  <!-- Featured Overview Section (Slider Layout) -->
+  <section class="section tours-slider-section" id="featured-tours">
+    <div class="container slider-container-wrapper">
+      <div class="slider-header-row">
+        <div class="slider-titles">
+          <h2>Featured Shore Excursions</h2>
+          <p>Our top-rated excursions custom-scheduled for your cruise ship arrival.</p>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-arrow prev-btn" id="tours-prev" aria-label="Previous Slides">
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <button class="slider-arrow next-btn" id="tours-next" aria-label="Next Slides">
+            <i data-lucide="chevron-right"></i>
+          </button>
+        </div>
       </div>
       
-      <!-- Featured Listings (3 most popular) -->
-      <div class="listings-grid" id="featured-grid">
-        <!-- Rendered by app.js (renders top 3 items) -->
-      </div>
-      
-      <div style="text-align: center; margin-top: 4rem; display: flex; justify-content: center; gap: 1.5rem;">
-        <a href="tours.html" class="btn btn-primary">View All Excursions</a>
-        <a href="activities.html" class="btn btn-secondary">View All Activities</a>
+      <div class="slider-split-layout">
+        <!-- Dark Side Banner -->
+        <div class="slider-promo-card">
+          <div class="promo-card-content">
+            <h3>Cruise Ship Excursions</h3>
+            <p>Experience the best of Morocco with professional local guide-drivers. We synchronize departures and returns exactly around your ship's docking schedule with 100% on-time return guarantee.</p>
+            <a href="tours.html" class="btn btn-primary btn-light-text">Explore All Tours <i data-lucide="arrow-right" size="16"></i></a>
+          </div>
+        </div>
+        
+        <!-- Slider Viewport -->
+        <div class="slider-viewport" id="tours-slider-viewport">
+          <div class="slider-track" id="tours-slider-track">
+            <!-- Rendered dynamically by app.js (all 7 tours) -->
+          </div>
+        </div>
       </div>
     </div>
   </section>
