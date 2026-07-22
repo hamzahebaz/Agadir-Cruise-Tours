@@ -6,7 +6,7 @@ export const tours = [
     "slug": "agadir-paradise-valley-full-day-tour",
     "title": "Agadir Paradise Valley Full-Day Tour",
     "description": "Book the best Agadir shore excursion to Paradise Valley — a full-day guided tour from Agadir cruise port. Explore natural pools, palm groves, and breathtaking landscapes. Designed for cruise passengers seeking authentic Moroccan adventure with guaranteed on-time return.",
-    "image": "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_1.jpg",
+    "image": "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_1.webp",
     "duration": "9 Hours",
     "price": 17,
     "type": "Adventure",
@@ -42,14 +42,14 @@ export const tours = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_1.jpg",
-      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_2.jpg",
-      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_3.jpg",
-      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_4.jpg",
-      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_5.jpg",
-      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_6.jpg",
-      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_7.jpg",
-      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_8.jpg"
+      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_1.webp",
+      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_2.webp",
+      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_3.webp",
+      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_4.webp",
+      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_5.webp",
+      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_6.webp",
+      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_7.webp",
+      "tours-images/agadir-or-taghazout-paradise-valley-atlas-mountain-berber-breakfast/image_8.webp"
     ]
   },
   {
@@ -57,7 +57,7 @@ export const tours = [
     "slug": "essaouira-day-trip-from-agadir",
     "title": "Essaouira Day Trip from Agadir – Agadir Cruise",
     "description": "Top-rated Agadir shore excursion to Essaouira — a full-day trip from Agadir cruise port to this UNESCO World Heritage site. Whitewashed medina, blue shutters, historic ramparts, and fresh seafood await on this must-do Agadir cruise tour.",
-    "image": "tours-images/agadir-to-essaouira/image_1.jpg",
+    "image": "tours-images/agadir-to-essaouira/image_1.webp",
     "duration": "11 Hours",
     "price": 37,
     "type": "Cultural",
@@ -96,11 +96,11 @@ export const tours = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "tours-images/agadir-to-essaouira/image_1.jpg",
-      "tours-images/agadir-to-essaouira/image_2.jpg",
-      "tours-images/agadir-to-essaouira/image_3.jpg",
-      "tours-images/agadir-to-essaouira/image_4.jpg",
-      "tours-images/agadir-to-essaouira/image_5.jpg"
+      "tours-images/agadir-to-essaouira/image_1.webp",
+      "tours-images/agadir-to-essaouira/image_2.webp",
+      "tours-images/agadir-to-essaouira/image_3.webp",
+      "tours-images/agadir-to-essaouira/image_4.webp",
+      "tours-images/agadir-to-essaouira/image_5.webp"
     ]
   },
   {
@@ -108,7 +108,7 @@ export const tours = [
     "slug": "sahara-desert-4x4-tour",
     "title": "From Agadir Cruise: 4x4 Sahara Desert Tour with Lunch",
     "description": "Unforgettable Agadir shore excursion: 4x4 Sahara desert tour from Agadir cruise port. Discover dunes, Atlas Mountains, Berber villages, and pristine beaches. Camel ride and traditional lunch included on this thrilling Agadir cruise tour.",
-    "image": "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_1.jpg",
+    "image": "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_1.webp",
     "duration": "8 Hours",
     "price": 40,
     "type": "Adventure",
@@ -146,10 +146,10 @@ export const tours = [
     ],
     "departureLocation": "Agadir cruise port or Taghazout hotel",
     "images": [
-      "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_1.jpg",
-      "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_2.jpg",
-      "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_3.jpg",
-      "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_4.jpg"
+      "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_1.webp",
+      "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_2.webp",
+      "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_3.webp",
+      "tours-images/agadir-or-taghazout-4wd-sahara-desert-day-trip-with-lunch-couscous-tagine/image_4.webp"
     ]
   },
   {
@@ -157,7 +157,7 @@ export const tours = [
     "slug": "taroudant-tiout-oasis-tour",
     "title": "From Agadir Cruise: Full-Day Tour to Taroudant & Tiout Oasis with Lunch",
     "description": "Explore 'Little Marrakech' on this Agadir shore excursion to Taroudant and Tiout Oasis from Agadir cruise port. Walk ancient ramparts, shop traditional souks, and enjoy a hilltop Kasbah lunch on this cultural Agadir cruise tour.",
-    "image": "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_1.jpg",
+    "image": "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_1.webp",
     "duration": "9 Hours",
     "price": 45,
     "type": "Cultural",
@@ -193,11 +193,11 @@ export const tours = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_1.jpg",
-      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_2.jpg",
-      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_3.jpg",
-      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_4.jpg",
-      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_5.jpg"
+      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_1.webp",
+      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_2.webp",
+      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_3.webp",
+      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_4.webp",
+      "tours-images/agadir-to-taroudant-tiout-day-tour-oassis-with-lunch/image_5.webp"
     ]
   },
   {
@@ -205,7 +205,7 @@ export const tours = [
     "slug": "agadir-guided-city-tour",
     "title": "From Agadir Cruise: Guided Half-Day City Tour",
     "description": "Discover Agadir on this guided city tour from Agadir cruise port. Visit the Kasbah, fishing port, Souk El Had, and artisan markets. The perfect half-day Agadir shore excursion for cruise passengers wanting culture and local life.",
-    "image": "tours-images/agadir-guided-city-tour/image_1.jpg",
+    "image": "tours-images/agadir-guided-city-tour/image_1.webp",
     "duration": "3.5 Hours",
     "price": 35,
     "type": "Cultural",
@@ -243,12 +243,12 @@ export const tours = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "tours-images/agadir-guided-city-tour/image_1.jpg",
-      "tours-images/agadir-guided-city-tour/image_2.jpg",
-      "tours-images/agadir-guided-city-tour/image_3.jpg",
-      "tours-images/agadir-guided-city-tour/image_4.jpg",
-      "tours-images/agadir-guided-city-tour/image_5.jpg",
-      "tours-images/agadir-guided-city-tour/image_6.jpg"
+      "tours-images/agadir-guided-city-tour/image_1.webp",
+      "tours-images/agadir-guided-city-tour/image_2.webp",
+      "tours-images/agadir-guided-city-tour/image_3.webp",
+      "tours-images/agadir-guided-city-tour/image_4.webp",
+      "tours-images/agadir-guided-city-tour/image_5.webp",
+      "tours-images/agadir-guided-city-tour/image_6.webp"
     ]
   },
   {
@@ -256,7 +256,7 @@ export const tours = [
     "slug": "sous-massa-national-park-tour",
     "title": "From Agadir Cruise: Half-Day Souss-Massa National Park & Wildlife Excursion",
     "description": "Half-day Agadir shore excursion to Souss-Massa National Park from Agadir cruise port. Spot rare wildlife including Addax, oryx, and the endangered Bald Ibis. A unique nature-focused Agadir cruise tour for wildlife enthusiasts.",
-    "image": "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_1.jpg",
+    "image": "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_1.webp",
     "duration": "5 Hours",
     "price": 70,
     "type": "Adventure",
@@ -294,10 +294,10 @@ export const tours = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_1.jpg",
-      "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_2.jpg",
-      "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_3.jpg",
-      "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_4.jpg"
+      "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_1.webp",
+      "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_2.webp",
+      "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_3.webp",
+      "activities-images/agadir-wildlife-national-park-souss-massa-visit-with-lunch/image_4.webp"
     ]
   },
   {
@@ -305,7 +305,7 @@ export const tours = [
     "slug": "legzira-cliffs-tiznit-tour",
     "title": "From Agadir Cruise: Legzira Cliffs & Silver City Tiznit Full-Day Tour",
     "description": "Full-day Agadir shore excursion to Legzira Beach and Tiznit from Agadir cruise port. Marvel at red rock arches, explore Morocco's silver capital, and enjoy coastal views. A photographer's dream Agadir cruise tour.",
-    "image": "tours-images/agadir-or-taghazout-legzira-beach-silver-tiznit/image_1.jpg",
+    "image": "tours-images/agadir-or-taghazout-legzira-beach-silver-tiznit/image_1.webp",
     "duration": "9 Hours",
     "price": 70,
     "type": "Cultural",
@@ -344,9 +344,9 @@ export const tours = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "tours-images/agadir-or-taghazout-legzira-beach-silver-tiznit/image_1.jpg",
-      "tours-images/agadir-or-taghazout-legzira-beach-silver-tiznit/image_2.jpg",
-      "tours-images/agadir-or-taghazout-legzira-beach-silver-tiznit/image_3.jpg"
+      "tours-images/agadir-or-taghazout-legzira-beach-silver-tiznit/image_1.webp",
+      "tours-images/agadir-or-taghazout-legzira-beach-silver-tiznit/image_2.webp",
+      "tours-images/agadir-or-taghazout-legzira-beach-silver-tiznit/image_3.webp"
     ]
   }
 ];
@@ -357,7 +357,7 @@ export const activities = [
     "slug": "souss-river-horseback-ride",
     "title": "Agadir: Horseback Ride along the Souss River with Mint Tea",
     "description": "Peaceful horseback ride through Agadir's landscapes — eucalyptus forests, dunes, and the Souss River with wild flamingoes. A family-friendly activity perfect for cruise passengers looking for a unique Agadir shore excursion.",
-    "image": "activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_1.jpg",
+    "image": "activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_1.webp",
     "duration": "2 Hours",
     "price": 35,
     "type": "Relaxation",
@@ -394,9 +394,9 @@ export const activities = [
     "departureLocation": "Hotel pickup in Agadir",
     "city": "Agadir",
     "images": [
-      "activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_1.jpg",
-      "activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_2.jpg",
-      "activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_3.jpg"
+      "activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_1.webp",
+      "activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_2.webp",
+      "activities-images/agadir-or-taghazout-flamingo-river-horse-ride-with-tea-cakes/image_3.webp"
     ]
   },
   {
@@ -404,7 +404,7 @@ export const activities = [
     "slug": "hammam-massage-experience",
     "title": "From Agadir Cruise: 2-Hour Hammam & Massage Experience",
     "description": "Traditional Moroccan hammam and massage experience from Agadir cruise port. Steam bath, black soap scrub, and relaxing massage with Moroccan oils. The ultimate wellness Agadir shore excursion for cruise passengers.",
-    "image": "activities-images/agadir-massage-hammam-spa-with-transfer/image_1.jpg",
+    "image": "activities-images/agadir-massage-hammam-spa-with-transfer/image_1.webp",
     "duration": "2 Hours",
     "price": 43,
     "type": "Relaxation",
@@ -440,10 +440,10 @@ export const activities = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "activities-images/agadir-massage-hammam-spa-with-transfer/image_1.jpg",
-      "activities-images/agadir-massage-hammam-spa-with-transfer/image_2.jpg",
-      "activities-images/agadir-massage-hammam-spa-with-transfer/image_3.jpg",
-      "activities-images/agadir-massage-hammam-spa-with-transfer/image_4.jpg"
+      "activities-images/agadir-massage-hammam-spa-with-transfer/image_1.webp",
+      "activities-images/agadir-massage-hammam-spa-with-transfer/image_2.webp",
+      "activities-images/agadir-massage-hammam-spa-with-transfer/image_3.webp",
+      "activities-images/agadir-massage-hammam-spa-with-transfer/image_4.webp"
     ]
   },
   {
@@ -451,7 +451,7 @@ export const activities = [
     "slug": "camel-ride-flamingos-adventure",
     "title": "From Agadir Cruise: Camel Ride & Flamingos Adventure",
     "description": "Classic camel ride experience from Agadir cruise port — ride through forests, sand dunes, and spot wild flamingos along the Souss River. A must-do Agadir shore excursion for families and couples visiting Morocco.",
-    "image": "activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_1.jpg",
+    "image": "activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_1.webp",
     "duration": "2 Hours",
     "price": 16,
     "type": "Relaxation",
@@ -487,9 +487,9 @@ export const activities = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_1.jpg",
-      "activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_2.jpg",
-      "activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_5.jpg"
+      "activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_1.webp",
+      "activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_2.webp",
+      "activities-images/agadir-or-taghazout-flamingo-river-camel-ride-with-tea-cakes/image_5.webp"
     ]
   },
   {
@@ -497,7 +497,7 @@ export const activities = [
     "slug": "crocoparc-agadir-tour",
     "title": "From Agadir Cruise: Crocoparc Entry Ticket with Transfers",
     "description": "Visit Crocoparc Agadir from the cruise port — 300 Nile crocodiles, exotic gardens, and skip-the-line entry. A fun family-friendly Agadir shore excursion with guided tour and round-trip transfers included.",
-    "image": "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_1.jpg",
+    "image": "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_1.webp",
     "duration": "5 Hours",
     "price": 30,
     "type": "Adventure",
@@ -534,10 +534,10 @@ export const activities = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_1.jpg",
-      "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_2.jpg",
-      "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_3.jpg",
-      "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_4.jpg"
+      "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_1.webp",
+      "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_2.webp",
+      "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_3.webp",
+      "activities-images/agadir-or-taghazout-crocodile-park-trip-with-entry-ticket/image_4.webp"
     ]
   },
   {
@@ -545,7 +545,7 @@ export const activities = [
     "slug": "desert-quad-adventure",
     "title": "From Agadir Cruise: Desert Quad Adventure",
     "description": "Thrilling quad biking adventure from Agadir cruise port — ride dunes, Atlantic coast, and Berber villages. Mint tea included. The adrenaline-pumping Agadir shore excursion for adventure-seeking cruise passengers.",
-    "image": "activities-images/desert-quad-adventure/image_1.jpg",
+    "image": "activities-images/desert-quad-adventure/image_1.webp",
     "duration": "4 Hours",
     "price": 55,
     "type": "Adventure",
@@ -583,9 +583,9 @@ export const activities = [
     ],
     "departureLocation": "Agadir cruise port or hotel pickup",
     "images": [
-      "activities-images/desert-quad-adventure/image_1.jpg",
-      "activities-images/desert-quad-adventure/image_3.jpg",
-      "activities-images/desert-quad-adventure/image_4.jpg"
+      "activities-images/desert-quad-adventure/image_1.webp",
+      "activities-images/desert-quad-adventure/image_3.webp",
+      "activities-images/desert-quad-adventure/image_4.webp"
     ]
   }
 ];

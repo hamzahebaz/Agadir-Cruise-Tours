@@ -18,12 +18,24 @@ function getTemplate(tour) {
   // Generate languages HTML
   const languagesHTML = tour.languages.map(l => `<span class="lang-tag">${l}</span>`).join(' ');
 
-  // Generate gallery HTML
-  const galleryHTML = (tour.images || [tour.image]).map((img, idx) => `
-    <div class="gallery-item-wrapper" data-index="${idx}">
-      <img src="../../${img}" alt="${tour.title} Gallery ${idx + 1}" class="gallery-thumb" loading="lazy">
-    </div>
-  `).join('\n');
+  // Get all images
+  const images = tour.images || [tour.image];
+  // We want to render up to 5 thumbnails
+  const maxThumbs = 5;
+  const thumbsHTML = images.slice(0, maxThumbs).map((img, idx) => {
+    const isLast = idx === maxThumbs - 1 && images.length > maxThumbs;
+    const viewMoreOverlay = isLast ? `
+      <div class="thumb-overlay">
+        <span>View More &rarr;</span>
+      </div>
+    ` : '';
+    return `
+      <div class="gallery-thumb-item\${idx === 0 ? ' active' : ''}" data-index="\${idx}">
+        <img src="../../\${img}" alt="\${tour.title} Thumbnail \${idx + 1}" loading="lazy">
+        \${viewMoreOverlay}
+      </div>
+    `;
+  }).join('\n');
 
   // Generate Recommended Tours HTML (first 3 other tours)
   const recommendedTours = tours
@@ -152,7 +164,7 @@ function getTemplate(tour) {
   <header class="navbar" id="navbar">
     <div class="container">
       <a href="../../index" class="logo">
-        <img src="../../logo.png" alt="Agadir Cruise Tours" class="logo-img" width="200" height="36">
+        <img src="../../logo.webp" alt="Agadir Cruise Tours" class="logo-img" width="200" height="36">
       </a>
       <ul class="nav-links" id="nav-links">
         <li><a href="../../index">Home</a></li>
@@ -223,17 +235,21 @@ function getTemplate(tour) {
           
           <div class="detail-block">
             <h2>Tour Gallery</h2>
-            <div class="tour-gallery-slider-container">
-              <div class="tour-gallery-slider" id="tour-gallery-slider">
-                ${galleryHTML}
+            <div class="tour-gallery-layout">
+              <div class="tour-gallery-featured" id="gallery-featured">
+                <img src="../../${tour.image}" alt="${tour.title} Featured" id="featured-main-img">
+                <span class="featured-rating-badge">
+                  <i data-lucide="star" fill="#f59e0b" style="color:#f59e0b; width:12px; height:12px;"></i>
+                  ${tour.rating} (${tour.reviewCount} reviews)
+                </span>
+                <button class="gallery-open-btn" id="gallery-open-btn">
+                  <i data-lucide="camera" style="width:14px; height:14px;"></i>
+                  Gallery
+                </button>
               </div>
-              <button class="gallery-slider-btn prev" id="gallery-slider-prev" aria-label="Previous Image">
-                <i data-lucide="chevron-left"></i>
-              </button>
-              <button class="gallery-slider-btn next" id="gallery-slider-next" aria-label="Next Image">
-                <i data-lucide="chevron-right"></i>
-              </button>
-              <div class="gallery-slider-dots" id="gallery-slider-dots"></div>
+              <div class="tour-gallery-thumbs" id="gallery-thumbs">
+                \${thumbsHTML}
+              </div>
             </div>
           </div>
 
@@ -381,7 +397,7 @@ function getTemplate(tour) {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../../logo.png" alt="Agadir Cruise Tours" class="footer-logo-img" width="356" height="64">
+          <img src="../../logo.webp" alt="Agadir Cruise Tours" class="footer-logo-img" width="356" height="64">
           <p class="footer-about">Providing the finest shore excursions and activities for cruise ship travelers visiting the port of Agadir, Morocco.</p>
           <div class="footer-social-links">
             <a href="https://www.facebook.com/p/Agadir-Samia-Tours-100091429973161/" class="footer-social-icon" target="_blank" aria-label="Facebook">
@@ -507,33 +523,98 @@ function getTemplate(tour) {
         });
       }
     });
-  <!-- Lightbox Gallery Modal -->
-  <div class="lightbox-modal" id="lightbox-modal">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close Preview">&times;</button>
-    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev-btn" aria-label="Previous Image">&#10094;</button>
-    <button class="lightbox-arrow lightbox-next" id="lightbox-next-btn" aria-label="Next Image">&#10095;</button>
-    <div class="lightbox-content">
-      <img src="" id="lightbox-img" alt="Gallery Preview">
+  <!-- Premium Gallery Lightbox Overlay -->
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <div class="lightbox-header">
+      <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+      <div class="lightbox-tools">
+        <button class="lightbox-tool-btn" id="lightbox-zoom" aria-label="Zoom Image">
+          <i data-lucide="zoom-in" style="width:18px; height:18px;"></i>
+        </button>
+        <button class="lightbox-tool-btn" id="lightbox-play" aria-label="Play Slideshow">
+          <i data-lucide="play" id="lightbox-play-icon" style="width:18px; height:18px;"></i>
+        </button>
+        <button class="lightbox-tool-btn" id="lightbox-fullscreen" aria-label="Toggle Fullscreen">
+          <i data-lucide="maximize" style="width:18px; height:18px;"></i>
+        </button>
+        <button class="lightbox-tool-btn close" id="lightbox-close-btn" aria-label="Close Lightbox">
+          <i data-lucide="x" style="width:20px; height:20px;"></i>
+        </button>
+      </div>
     </div>
+    
+    <button class="lightbox-nav-btn prev" id="lightbox-prev-btn" aria-label="Previous Image">
+      <i data-lucide="arrow-left" style="width:20px; height:20px;"></i>
+    </button>
+    
+    <div class="lightbox-main">
+      <img src="" id="lightbox-active-img" alt="Gallery Preview">
+    </div>
+    
+    <button class="lightbox-nav-btn next" id="lightbox-next-btn" aria-label="Next Image">
+      <i data-lucide="arrow-right" style="width:20px; height:20px;"></i>
+    </button>
   </div>
 
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', () => {
-      const galleryItems = document.querySelectorAll('.gallery-item-wrapper');
-      const lightbox = document.getElementById('lightbox-modal');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const lightboxClose = document.getElementById('lightbox-close');
+      // --- Gallery Switcher & Lightbox Preview Logic ---
+      const featuredContainer = document.getElementById('gallery-featured');
+      const featuredImg = document.getElementById('featured-main-img');
+      const galleryOpenBtn = document.getElementById('gallery-open-btn');
+      const thumbItems = document.querySelectorAll('.gallery-thumb-item');
+      
+      const lightbox = document.getElementById('lightbox-overlay');
+      const lightboxImg = document.getElementById('lightbox-active-img');
+      const lightboxCounter = document.getElementById('lightbox-counter');
+      const lightboxClose = document.getElementById('lightbox-close-btn');
       const lightboxPrev = document.getElementById('lightbox-prev-btn');
       const lightboxNext = document.getElementById('lightbox-next-btn');
+      const lightboxZoom = document.getElementById('lightbox-zoom');
+      const lightboxPlay = document.getElementById('lightbox-play');
+      const lightboxFullscreen = document.getElementById('lightbox-fullscreen');
       
-      if (!galleryItems.length || !lightbox) return;
+      if (!lightbox) return;
+
+      let currentIdx = 0;
+      let slideshowInterval = null;
       
-      let currentImgIdx = 0;
-      const imagesList = Array.from(galleryItems).map(item => item.querySelector('img').src);
+      const tourImages = ${JSON.stringify(images)};
+      const imagesList = tourImages.map(img => '../../' + img);
+      
+      function updateFeaturedImage(index) {
+        currentIdx = index;
+        if (featuredImg) {
+          featuredImg.src = imagesList[currentIdx];
+        }
+        
+        thumbItems.forEach((thumb, i) => {
+          if (i === index) {
+            thumb.classList.add('active');
+          } else {
+            thumb.classList.remove('active');
+          }
+        });
+      }
+      
+      thumbItems.forEach((thumb, idx) => {
+        thumb.addEventListener('click', () => {
+          updateFeaturedImage(idx);
+        });
+      });
+      
+      function updateLightbox() {
+        if (lightboxImg) {
+          lightboxImg.src = imagesList[currentIdx];
+        }
+        if (lightboxCounter) {
+          lightboxCounter.textContent = (currentIdx + 1) + ' / ' + imagesList.length;
+        }
+      }
       
       function openLightbox(index) {
-        currentImgIdx = index;
-        lightboxImg.src = imagesList[currentImgIdx];
+        currentIdx = index;
+        updateLightbox();
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
@@ -541,28 +622,91 @@ function getTemplate(tour) {
       function closeLightbox() {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
+        stopSlideshow();
+        if (lightboxImg) {
+          lightboxImg.classList.remove('zoomed');
+        }
       }
       
       function nextImage() {
-        currentImgIdx = (currentImgIdx + 1) % imagesList.length;
-        lightboxImg.src = imagesList[currentImgIdx];
+        currentIdx = (currentIdx + 1) % imagesList.length;
+        updateLightbox();
       }
       
       function prevImage() {
-        currentImgIdx = (currentImgIdx - 1 + imagesList.length) % imagesList.length;
-        lightboxImg.src = imagesList[currentImgIdx];
+        currentIdx = (currentIdx - 1 + imagesList.length) % imagesList.length;
+        updateLightbox();
       }
       
-      galleryItems.forEach((item, idx) => {
-        item.addEventListener('click', () => openLightbox(idx));
-      });
+      if (lightboxZoom && lightboxImg) {
+        lightboxZoom.addEventListener('click', () => {
+          lightboxImg.classList.toggle('zoomed');
+        });
+        lightboxImg.addEventListener('click', () => {
+          lightboxImg.classList.toggle('zoomed');
+        });
+      }
+      
+      function startSlideshow() {
+        const playIcon = document.getElementById('lightbox-play-icon');
+        if (playIcon) {
+          playIcon.setAttribute('data-lucide', 'pause');
+        }
+        lucide.createIcons();
+        slideshowInterval = setInterval(nextImage, 3000);
+      }
+      
+      function stopSlideshow() {
+        if (slideshowInterval) {
+          clearInterval(slideshowInterval);
+          slideshowInterval = null;
+        }
+        const playIcon = document.getElementById('lightbox-play-icon');
+        if (playIcon) {
+          playIcon.setAttribute('data-lucide', 'play');
+        }
+        lucide.createIcons();
+      }
+      
+      if (lightboxPlay) {
+        lightboxPlay.addEventListener('click', () => {
+          if (slideshowInterval) {
+            stopSlideshow();
+          } else {
+            startSlideshow();
+          }
+        });
+      }
+      
+      if (lightboxFullscreen) {
+        lightboxFullscreen.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            lightbox.requestFullscreen().catch(() => {});
+          } else {
+            document.exitFullscreen();
+          }
+        });
+      }
+      
+      if (featuredContainer) {
+        featuredContainer.addEventListener('click', (e) => {
+          if (e.target.closest('#gallery-open-btn')) return;
+          openLightbox(currentIdx);
+        });
+      }
+      
+      if (galleryOpenBtn) {
+        galleryOpenBtn.addEventListener('click', () => {
+          openLightbox(currentIdx);
+        });
+      }
       
       if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
       if (lightboxNext) lightboxNext.addEventListener('click', nextImage);
       if (lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
       
       lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+        if (e.target === lightbox || e.target.classList.contains('lightbox-main')) {
           closeLightbox();
         }
       });
@@ -573,91 +717,6 @@ function getTemplate(tour) {
         if (e.key === 'ArrowRight') nextImage();
         if (e.key === 'ArrowLeft') prevImage();
       });
-
-      // --- Gallery Slider Logic ---
-      const gallerySlider = document.getElementById('tour-gallery-slider');
-      const galleryPrevBtn = document.getElementById('gallery-slider-prev');
-      const galleryNextBtn = document.getElementById('gallery-slider-next');
-      const galleryDotsContainer = document.getElementById('gallery-slider-dots');
-      const gallerySlides = gallerySlider ? gallerySlider.children : [];
-      
-      let currentGalleryIdx = 0;
-      
-      function getVisibleSlides() {
-        if (window.innerWidth <= 768) return 1;
-        if (window.innerWidth <= 1024) return 2;
-        return 3;
-      }
-      
-      function updateGallerySlider() {
-        if (!gallerySlider || gallerySlides.length === 0) return;
-        const visibleSlides = getVisibleSlides();
-        const maxIdx = Math.max(0, gallerySlides.length - visibleSlides);
-        
-        if (currentGalleryIdx > maxIdx) {
-          currentGalleryIdx = maxIdx;
-        }
-        
-        const slideWidth = gallerySlides[0].offsetWidth;
-        const translateAmount = currentGalleryIdx * slideWidth;
-        gallerySlider.style.transform = 'translateX(-' + translateAmount + 'px)';
-        
-        // Update dots
-        const dots = galleryDotsContainer.querySelectorAll('.gallery-slider-dot');
-        dots.forEach((dot, idx) => {
-          if (idx === currentGalleryIdx) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-      }
-      
-      function initGallerySlider() {
-        if (!gallerySlider || gallerySlides.length === 0) return;
-        
-        const visibleSlides = getVisibleSlides();
-        const numDots = Math.max(1, gallerySlides.length - visibleSlides + 1);
-        galleryDotsContainer.innerHTML = '';
-        
-        for (let i = 0; i < numDots; i++) {
-          const dot = document.createElement('div');
-          dot.className = 'gallery-slider-dot' + (i === 0 ? ' active' : '');
-          dot.addEventListener('click', () => {
-            currentGalleryIdx = i;
-            updateGallerySlider();
-          });
-          galleryDotsContainer.appendChild(dot);
-        }
-        
-        updateGallerySlider();
-      }
-      
-      if (galleryPrevBtn) {
-        galleryPrevBtn.addEventListener('click', () => {
-          if (currentGalleryIdx > 0) {
-            currentGalleryIdx--;
-            updateGallerySlider();
-          }
-        });
-      }
-      
-      if (galleryNextBtn) {
-        galleryNextBtn.addEventListener('click', () => {
-          const visibleSlides = getVisibleSlides();
-          const maxIdx = Math.max(0, gallerySlides.length - visibleSlides);
-          if (currentGalleryIdx < maxIdx) {
-            currentGalleryIdx++;
-            updateGallerySlider();
-          }
-        });
-      }
-      
-      window.addEventListener('resize', () => {
-        initGallerySlider();
-      });
-      
-      initGallerySlider();
     });
   </script>
 

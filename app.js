@@ -47,13 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Hero Slideshow ---
   const heroBg = document.getElementById('hero-bg');
   const heroImages = [
-    'hero-images/agadir-1.jpg',
-    'hero-images/agadir-2.jpg',
+    'hero-images/agadir-1.webp',
+    'hero-images/agadir-2.webp',
     'hero-images/agadir-3.avif',
-    'hero-images/agadir-4.jpg',
+    'hero-images/agadir-4.webp',
     'hero-images/agadir-5.webp',
-    'hero-images/agadir-6.jpg',
-    'hero-images/agadir-7.jpg'
+    'hero-images/agadir-6.webp',
+    'hero-images/agadir-7.webp'
   ];
 
   if (heroBg && heroImages.length > 0) {
@@ -1086,10 +1086,10 @@ Thank you!`;
         desc: "Boasting exceptional passenger space and personalized service, Crystal Serenity brings a world of sophisticated refinement right to the shores of Agadir.",
         type: "Luxury Cruise Ship, Spacious",
         images: [
-          "cruises-images/Crystal-Serenity.jpg",
-          "cruises-images/Crystal-Serenity-1.jpg",
-          "cruises-images/Crystal-Serenity-2.jpg",
-          "cruises-images/Crystal-Serenity-3.jpg"
+          "cruises-images/Crystal-Serenity.webp",
+          "cruises-images/Crystal-Serenity-1.webp",
+          "cruises-images/Crystal-Serenity-2.webp",
+          "cruises-images/Crystal-Serenity-3.webp"
         ]
       },
       {
@@ -1134,7 +1134,7 @@ Thank you!`;
         desc: "The MS Amadea is Phoenix Reisen's elegant flagship, offering first-class comfort, exceptional privacy, and highly personalized service for premium voyages.",
         type: "Elegant Flagship, Premium Class",
         images: [
-          "cruises-images/Amadea.jpg",
+          "cruises-images/Amadea.webp",
           "cruises-images/Amadea-1.webp",
           "cruises-images/Amadea-2.webp",
           "cruises-images/Amadea-3.webp"
