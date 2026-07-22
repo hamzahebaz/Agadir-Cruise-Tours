@@ -223,8 +223,17 @@ function getTemplate(tour) {
           
           <div class="detail-block">
             <h2>Tour Gallery</h2>
-            <div class="tour-gallery-grid">
-              ${galleryHTML}
+            <div class="tour-gallery-slider-container">
+              <div class="tour-gallery-slider" id="tour-gallery-slider">
+                ${galleryHTML}
+              </div>
+              <button class="gallery-slider-btn prev" id="gallery-slider-prev" aria-label="Previous Image">
+                <i data-lucide="chevron-left"></i>
+              </button>
+              <button class="gallery-slider-btn next" id="gallery-slider-next" aria-label="Next Image">
+                <i data-lucide="chevron-right"></i>
+              </button>
+              <div class="gallery-slider-dots" id="gallery-slider-dots"></div>
             </div>
           </div>
 
@@ -564,6 +573,91 @@ function getTemplate(tour) {
         if (e.key === 'ArrowRight') nextImage();
         if (e.key === 'ArrowLeft') prevImage();
       });
+
+      // --- Gallery Slider Logic ---
+      const gallerySlider = document.getElementById('tour-gallery-slider');
+      const galleryPrevBtn = document.getElementById('gallery-slider-prev');
+      const galleryNextBtn = document.getElementById('gallery-slider-next');
+      const galleryDotsContainer = document.getElementById('gallery-slider-dots');
+      const gallerySlides = gallerySlider ? gallerySlider.children : [];
+      
+      let currentGalleryIdx = 0;
+      
+      function getVisibleSlides() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+      }
+      
+      function updateGallerySlider() {
+        if (!gallerySlider || gallerySlides.length === 0) return;
+        const visibleSlides = getVisibleSlides();
+        const maxIdx = Math.max(0, gallerySlides.length - visibleSlides);
+        
+        if (currentGalleryIdx > maxIdx) {
+          currentGalleryIdx = maxIdx;
+        }
+        
+        const slideWidth = gallerySlides[0].offsetWidth;
+        const translateAmount = currentGalleryIdx * slideWidth;
+        gallerySlider.style.transform = 'translateX(-' + translateAmount + 'px)';
+        
+        // Update dots
+        const dots = galleryDotsContainer.querySelectorAll('.gallery-slider-dot');
+        dots.forEach((dot, idx) => {
+          if (idx === currentGalleryIdx) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+      
+      function initGallerySlider() {
+        if (!gallerySlider || gallerySlides.length === 0) return;
+        
+        const visibleSlides = getVisibleSlides();
+        const numDots = Math.max(1, gallerySlides.length - visibleSlides + 1);
+        galleryDotsContainer.innerHTML = '';
+        
+        for (let i = 0; i < numDots; i++) {
+          const dot = document.createElement('div');
+          dot.className = 'gallery-slider-dot' + (i === 0 ? ' active' : '');
+          dot.addEventListener('click', () => {
+            currentGalleryIdx = i;
+            updateGallerySlider();
+          });
+          galleryDotsContainer.appendChild(dot);
+        }
+        
+        updateGallerySlider();
+      }
+      
+      if (galleryPrevBtn) {
+        galleryPrevBtn.addEventListener('click', () => {
+          if (currentGalleryIdx > 0) {
+            currentGalleryIdx--;
+            updateGallerySlider();
+          }
+        });
+      }
+      
+      if (galleryNextBtn) {
+        galleryNextBtn.addEventListener('click', () => {
+          const visibleSlides = getVisibleSlides();
+          const maxIdx = Math.max(0, gallerySlides.length - visibleSlides);
+          if (currentGalleryIdx < maxIdx) {
+            currentGalleryIdx++;
+            updateGallerySlider();
+          }
+        });
+      }
+      
+      window.addEventListener('resize', () => {
+        initGallerySlider();
+      });
+      
+      initGallerySlider();
     });
   </script>
 
