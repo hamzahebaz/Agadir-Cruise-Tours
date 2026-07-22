@@ -335,6 +335,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Render Reviews ---
   // --- Render Reviews Carousel ---
   let currentReviewIndex = 0;
+  let reviewCardWidth = 0;
+  let reviewGridGap = 24;
+
+  function measureReviewDimensions() {
+    if (!reviewsGrid || reviewsGrid.children.length === 0) return;
+    reviewCardWidth = reviewsGrid.children[0].offsetWidth;
+    reviewGridGap = parseFloat(window.getComputedStyle(reviewsGrid).gap) || 24;
+  }
 
   function renderReviews() {
     if (!reviewsGrid) return;
@@ -377,8 +385,11 @@ document.addEventListener('DOMContentLoaded', () => {
       reviewsGrid.appendChild(card);
     });
 
-    updateCarousel();
-    renderDots();
+    setTimeout(() => {
+      measureReviewDimensions();
+      updateCarousel();
+      renderDots();
+    }, 50);
   }
 
   function updateCarousel() {
@@ -396,15 +407,12 @@ document.addEventListener('DOMContentLoaded', () => {
       currentReviewIndex = maxIndex;
     }
 
-    // Use requestAnimationFrame to ensure the browser has finished layout reflow
-    requestAnimationFrame(() => {
-      const cardWidth = cards[0].offsetWidth;
-      const computedStyle = window.getComputedStyle(reviewsGrid);
-      const gap = parseFloat(computedStyle.gap) || 0;
+    if (reviewCardWidth === 0) {
+      measureReviewDimensions();
+    }
 
-      const translateAmount = currentReviewIndex * (cardWidth + gap);
-      reviewsGrid.style.transform = `translateX(-${translateAmount}px)`;
-    });
+    const translateAmount = currentReviewIndex * (reviewCardWidth + reviewGridGap);
+    reviewsGrid.style.transform = `translateX(-${translateAmount}px)`;
 
     Array.from(cards).forEach((card, idx) => {
       card.classList.remove('active-slide');
@@ -465,6 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('resize', () => {
+    measureReviewDimensions();
     updateCarousel();
     renderDots();
   });
@@ -489,13 +498,10 @@ document.addEventListener('DOMContentLoaded', () => {
       reviewsGrid.style.cursor = 'grabbing';
       reviewsGrid.style.transition = 'none';
 
-      const cards = reviewsGrid.children;
-      if (cards.length > 0) {
-        const cardWidth = cards[0].offsetWidth;
-        const computedStyle = window.getComputedStyle(reviewsGrid);
-        const gap = parseFloat(computedStyle.gap) || 0;
-        currentTranslate = -currentReviewIndex * (cardWidth + gap);
+      if (reviewCardWidth === 0) {
+        measureReviewDimensions();
       }
+      currentTranslate = -currentReviewIndex * (reviewCardWidth + reviewGridGap);
     };
 
     const dragMove = (e) => {
