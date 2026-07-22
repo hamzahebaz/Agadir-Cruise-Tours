@@ -3112,3 +3112,10 @@ select.form-control {
   justify-content: center !important;
   width: auto !important;
 }
+
+/* Disable hero entrance animation on mobile to maximize FCP/LCP performance */
+@media (max-width: 768px) {
+  .hero-content {
+    animation: none !important;
+  }
+}
