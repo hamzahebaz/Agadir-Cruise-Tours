@@ -1956,6 +1956,9 @@ select.form-control {
     align-items: flex-start;
     gap: 1.5rem;
   }
+  .promo-card-content h3 {
+    font-size: 1.35rem;
+  }
 }
 
 /* Tour Details Single Page Layout */
@@ -3042,4 +3045,68 @@ select.form-control {
     padding: 0;
     margin: 0;
   }
+}
+
+/* Sidebar Slider Controls Positioned on the Sides */
+.slider-viewport {
+  position: relative;
+}
+
+.viewport-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+  padding: 0 0.5rem;
+}
+
+.viewport-controls .slider-arrow {
+  pointer-events: auto;
+  background: #ffffff;
+  color: var(--secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-normal);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.viewport-controls .slider-arrow:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .viewport-controls {
+    padding: 0 0.25rem;
+  }
+  .viewport-controls .slider-arrow {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Card Excursion & Details Button Size Standardization */
+.card-footer .btn,
+.rec-card-footer .btn {
+  padding: 0.6rem 1.1rem !important;
+  font-size: 0.85rem !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
 }

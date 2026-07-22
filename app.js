@@ -367,9 +367,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ${taLogoHtml} TripAdvisor
           </span>
         </div>
-        <div class="stars-row">
+        <div class="stars-row" style="gap: 0.25rem; display: flex; align-items: center; margin: 0.5rem 0;">
           ${[...Array(5)].map((_, i) => `
-            <i data-lucide="star" fill="${i < item.rating ? '#f59e0b' : 'none'}" size="14" style="color: #f59e0b;"></i>
+            <span style="display: inline-block; width: 12.5px; height: 12.5px; border-radius: 50%; border: 1.5px solid #00af87; background: ${i < item.rating ? '#00af87' : 'transparent'};"></span>
           `).join('')}
         </div>
         <p class="review-text">"${item.text}"</p>
@@ -843,6 +843,7 @@ Thank you!`;
     if (!track || !prevBtn || !nextBtn) return;
     
     let currentIndex = 0;
+    let autoPlayInterval = null;
     
     const getVisibleCount = () => {
       const width = window.innerWidth;
@@ -861,31 +862,76 @@ Thank you!`;
       
       track.style.transform = `translateX(-${currentIndex * step}px)`;
       
-      const maxSlides = cards.length - getVisibleCount();
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex >= maxSlides || maxSlides <= 0;
+      prevBtn.disabled = false;
+      nextBtn.disabled = false;
     };
     
-    prevBtn.addEventListener('click', () => {
-      currentIndex = Math.max(0, currentIndex - getVisibleCount());
+    const slideNext = () => {
+      const cards = track.querySelectorAll('.card');
+      const maxSlides = cards.length - getVisibleCount();
+      if (maxSlides <= 0) return;
+      
+      if (currentIndex >= maxSlides) {
+        currentIndex = 0;
+      } else {
+        currentIndex = Math.min(maxSlides, currentIndex + getVisibleCount());
+      }
       updateSlider();
+    };
+
+    const slidePrev = () => {
+      const cards = track.querySelectorAll('.card');
+      const maxSlides = cards.length - getVisibleCount();
+      if (maxSlides <= 0) return;
+      
+      if (currentIndex <= 0) {
+        currentIndex = maxSlides;
+      } else {
+        currentIndex = Math.max(0, currentIndex - getVisibleCount());
+      }
+      updateSlider();
+    };
+
+    prevBtn.addEventListener('click', () => {
+      slidePrev();
+      resetAutoplay();
     });
     
     nextBtn.addEventListener('click', () => {
-      const cards = track.querySelectorAll('.card');
-      const maxSlides = cards.length - getVisibleCount();
-      currentIndex = Math.min(maxSlides, currentIndex + getVisibleCount());
-      updateSlider();
+      slideNext();
+      resetAutoplay();
     });
     
     window.addEventListener('resize', () => {
       const cards = track.querySelectorAll('.card');
-      currentIndex = Math.min(currentIndex, Math.max(0, cards.length - getVisibleCount()));
+      const maxSlides = cards.length - getVisibleCount();
+      currentIndex = Math.min(currentIndex, Math.max(0, maxSlides));
       updateSlider();
     });
-    
-    // Slight delay to ensure elements are fully painted before getting dimensions
-    setTimeout(updateSlider, 200);
+
+    const startAutoplay = () => {
+      if (autoPlayInterval) clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(slideNext, 5000);
+    };
+
+    const resetAutoplay = () => {
+      startAutoplay();
+    };
+
+    const viewport = track.parentElement;
+    if (viewport) {
+      viewport.addEventListener('mouseenter', () => {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+      });
+      viewport.addEventListener('mouseleave', () => {
+        startAutoplay();
+      });
+    }
+
+    setTimeout(() => {
+      updateSlider();
+      startAutoplay();
+    }, 200);
   }
 
   // Activities Slider Control logic
@@ -897,6 +943,7 @@ Thank you!`;
     if (!track || !prevBtn || !nextBtn) return;
     
     let currentIndex = 0;
+    let autoPlayInterval = null;
     
     const getVisibleCount = () => {
       const width = window.innerWidth;
@@ -915,30 +962,76 @@ Thank you!`;
       
       track.style.transform = `translateX(-${currentIndex * step}px)`;
       
-      const maxSlides = cards.length - getVisibleCount();
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex >= maxSlides || maxSlides <= 0;
+      prevBtn.disabled = false;
+      nextBtn.disabled = false;
     };
     
-    prevBtn.addEventListener('click', () => {
-      currentIndex = Math.max(0, currentIndex - getVisibleCount());
+    const slideNext = () => {
+      const cards = track.querySelectorAll('.card');
+      const maxSlides = cards.length - getVisibleCount();
+      if (maxSlides <= 0) return;
+      
+      if (currentIndex >= maxSlides) {
+        currentIndex = 0;
+      } else {
+        currentIndex = Math.min(maxSlides, currentIndex + getVisibleCount());
+      }
       updateSlider();
+    };
+
+    const slidePrev = () => {
+      const cards = track.querySelectorAll('.card');
+      const maxSlides = cards.length - getVisibleCount();
+      if (maxSlides <= 0) return;
+      
+      if (currentIndex <= 0) {
+        currentIndex = maxSlides;
+      } else {
+        currentIndex = Math.max(0, currentIndex - getVisibleCount());
+      }
+      updateSlider();
+    };
+
+    prevBtn.addEventListener('click', () => {
+      slidePrev();
+      resetAutoplay();
     });
     
     nextBtn.addEventListener('click', () => {
-      const cards = track.querySelectorAll('.card');
-      const maxSlides = cards.length - getVisibleCount();
-      currentIndex = Math.min(maxSlides, currentIndex + getVisibleCount());
-      updateSlider();
+      slideNext();
+      resetAutoplay();
     });
     
     window.addEventListener('resize', () => {
       const cards = track.querySelectorAll('.card');
-      currentIndex = Math.min(currentIndex, Math.max(0, cards.length - getVisibleCount()));
+      const maxSlides = cards.length - getVisibleCount();
+      currentIndex = Math.min(currentIndex, Math.max(0, maxSlides));
       updateSlider();
     });
+
+    const startAutoplay = () => {
+      if (autoPlayInterval) clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(slideNext, 5000);
+    };
+
+    const resetAutoplay = () => {
+      startAutoplay();
+    };
+
+    const viewport = track.parentElement;
+    if (viewport) {
+      viewport.addEventListener('mouseenter', () => {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+      });
+      viewport.addEventListener('mouseleave', () => {
+        startAutoplay();
+      });
+    }
     
-    setTimeout(updateSlider, 200);
+    setTimeout(() => {
+      updateSlider();
+      startAutoplay();
+    }, 200);
   }
 
   // --- Run Initializations ---
