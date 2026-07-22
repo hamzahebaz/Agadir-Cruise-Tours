@@ -1270,6 +1270,65 @@ Thank you!`;
     }
   });
 
+  // --- Custom Language Selector Logic ---
+  const langBtn = document.getElementById('lang-btn');
+  const langSelector = document.querySelector('.lang-selector');
+  const langOptions = document.querySelectorAll('.lang-option');
+  const currentLangText = document.querySelector('.current-lang-text');
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
+  const googtransCookie = getCookie('googtrans');
+  let currentLang = 'en';
+  if (googtransCookie) {
+    const parts = googtransCookie.split('/');
+    if (parts.length > 0) {
+      currentLang = parts[parts.length - 1].toLowerCase();
+    }
+  }
+
+  if (currentLangText) {
+    currentLangText.textContent = currentLang.toUpperCase();
+  }
+
+  langOptions.forEach(opt => {
+    if (opt.getAttribute('data-lang') === currentLang) {
+      opt.classList.add('active');
+    } else {
+      opt.classList.remove('active');
+    }
+  });
+
+  if (langBtn) {
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langSelector.classList.toggle('open');
+    });
+  }
+
+  document.addEventListener('click', () => {
+    if (langSelector) {
+      langSelector.classList.remove('open');
+    }
+  });
+
+  window.changeLanguage = function(langCode) {
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+    
+    if (langCode !== 'en') {
+      document.cookie = "googtrans=/en/" + langCode + "; path=/;";
+      document.cookie = "googtrans=/en/" + langCode + "; path=/; domain=" + window.location.hostname;
+    }
+    
+    window.location.reload();
+  };
+
   // Render icons
   lucide.createIcons();
 });

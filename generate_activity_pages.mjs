@@ -151,7 +151,7 @@ function getTemplate(activity) {
   <header class="navbar" id="navbar">
     <div class="container">
       <a href="../../index" class="logo">
-        <img src="../../logo.png" alt="Agadir Cruise Tours" class="logo-img">
+        <img src="../../logo.png" alt="Agadir Cruise Tours" class="logo-img" width="200" height="36">
       </a>
       <ul class="nav-links" id="nav-links">
         <li><a href="../../index">Home</a></li>
@@ -164,6 +164,22 @@ function getTemplate(activity) {
       </ul>
       <div class="nav-actions">
         <a href="../../contact" class="btn btn-secondary">Book Excursion</a>
+        
+      <div class="lang-selector">
+        <button class="lang-btn" id="lang-btn" aria-label="Select Language">
+          <i data-lucide="languages" class="lang-icon"></i>
+          <span class="current-lang-text">EN</span>
+          <i data-lucide="chevron-down" class="chevron-icon"></i>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a href="#" onclick="changeLanguage('en'); return false;" class="lang-option active" data-lang="en">English</a>
+          <a href="#" onclick="changeLanguage('de'); return false;" class="lang-option" data-lang="de">Deutsch</a>
+          <a href="#" onclick="changeLanguage('fr'); return false;" class="lang-option" data-lang="fr">Français</a>
+          <a href="#" onclick="changeLanguage('es'); return false;" class="lang-option" data-lang="es">Español</a>
+          <a href="#" onclick="changeLanguage('it'); return false;" class="lang-option" data-lang="it">Italiano</a>
+        </div>
+      </div>
+
         <button class="nav-toggle" id="nav-toggle">
           <i data-lucide="menu"></i>
         </button>
@@ -205,15 +221,15 @@ function getTemplate(activity) {
         <div class="tour-details-left">
           
           <div class="detail-block">
-            <h2>Overview & Description</h2>
-            <p class="description-lead">${activity.fullDescription.replace(/\n\n/g, '</p><p class="description-lead">')}</p>
-          </div>
-
-          <div class="detail-block">
             <h2>Activity Gallery</h2>
             <div class="tour-gallery-grid">
               ${galleryHTML}
             </div>
+          </div>
+
+          <div class="detail-block">
+            <h2>Overview & Description</h2>
+            <p class="description-lead">${activity.fullDescription.replace(/\n\n/g, '</p><p class="description-lead">')}</p>
           </div>
           
           <div class="detail-block">
@@ -355,7 +371,7 @@ function getTemplate(activity) {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../../logo.png" alt="Agadir Cruise Tours" class="footer-logo-img">
+          <img src="../../logo.png" alt="Agadir Cruise Tours" class="footer-logo-img" width="356" height="64">
           <p class="footer-about">Providing the finest shore excursions and activities for cruise ship travelers visiting the port of Agadir, Morocco.</p>
           <div class="footer-social-links">
             <a href="https://www.facebook.com/p/Agadir-Samia-Tours-100091429973161/" class="footer-social-icon" target="_blank" aria-label="Facebook">
@@ -481,7 +497,89 @@ function getTemplate(activity) {
         });
       }
     });
+  <!-- Lightbox Gallery Modal -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close Preview">&times;</button>
+    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev-btn" aria-label="Previous Image">&#10094;</button>
+    <button class="lightbox-arrow lightbox-next" id="lightbox-next-btn" aria-label="Next Image">&#10095;</button>
+    <div class="lightbox-content">
+      <img src="" id="lightbox-img" alt="Gallery Preview">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      const galleryItems = document.querySelectorAll('.gallery-item-wrapper');
+      const lightbox = document.getElementById('lightbox-modal');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      const lightboxPrev = document.getElementById('lightbox-prev-btn');
+      const lightboxNext = document.getElementById('lightbox-next-btn');
+      
+      if (!galleryItems.length || !lightbox) return;
+      
+      let currentImgIdx = 0;
+      const imagesList = Array.from(galleryItems).map(item => item.querySelector('img').src);
+      
+      function openLightbox(index) {
+        currentImgIdx = index;
+        lightboxImg.src = imagesList[currentImgIdx];
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      function nextImage() {
+        currentImgIdx = (currentImgIdx + 1) % imagesList.length;
+        lightboxImg.src = imagesList[currentImgIdx];
+      }
+      
+      function prevImage() {
+        currentImgIdx = (currentImgIdx - 1 + imagesList.length) % imagesList.length;
+        lightboxImg.src = imagesList[currentImgIdx];
+      }
+      
+      galleryItems.forEach((item, idx) => {
+        item.addEventListener('click', () => openLightbox(idx));
+      });
+      
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightboxNext) lightboxNext.addEventListener('click', nextImage);
+      if (lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
+      
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+          closeLightbox();
+        }
+      });
+      
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+      });
+    });
   </script>
+
+  <!-- Google Translate Integration -->
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
 `;

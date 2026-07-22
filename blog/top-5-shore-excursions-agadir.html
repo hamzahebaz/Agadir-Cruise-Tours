@@ -40,7 +40,7 @@
   <header class="navbar" id="navbar">
     <div class="container navbar-container">
       <a href="../index" class="logo">
-        <img src="../logo.png" alt="Agadir Cruise Tours Logo" class="logo-img">
+        <img src="../logo.png" alt="Agadir Cruise Tours Logo" class="logo-img" width="200" height="36">
       </a>
       <nav>
         <ul class="nav-links" id="nav-links">
@@ -55,6 +55,22 @@
       </nav>
       <div class="nav-actions">
         <a href="../contact" class="btn btn-secondary">Book Excursion</a>
+        
+      <div class="lang-selector">
+        <button class="lang-btn" id="lang-btn" aria-label="Select Language">
+          <i data-lucide="languages" class="lang-icon"></i>
+          <span class="current-lang-text">EN</span>
+          <i data-lucide="chevron-down" class="chevron-icon"></i>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a href="#" onclick="changeLanguage('en'); return false;" class="lang-option active" data-lang="en">English</a>
+          <a href="#" onclick="changeLanguage('de'); return false;" class="lang-option" data-lang="de">Deutsch</a>
+          <a href="#" onclick="changeLanguage('fr'); return false;" class="lang-option" data-lang="fr">Français</a>
+          <a href="#" onclick="changeLanguage('es'); return false;" class="lang-option" data-lang="es">Español</a>
+          <a href="#" onclick="changeLanguage('it'); return false;" class="lang-option" data-lang="it">Italiano</a>
+        </div>
+      </div>
+
         <button class="nav-toggle" id="nav-toggle">
           <i data-lucide="menu"></i>
         </button>
@@ -128,7 +144,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="../index" class="footer-logo">
-            <img src="../logo.png" alt="Agadir Cruise Tours" class="footer-logo-img">
+            <img src="../logo.png" alt="Agadir Cruise Tours" class="footer-logo-img" width="356" height="64">
           </a>
           <p>Handcrafted, private shore excursions in Agadir, Morocco. Designed for cruise passengers, operated by licensed professionals.</p>
         </div>
@@ -158,5 +174,20 @@
   </footer>
 
   <script type="module" src="../app.js"></script>
+
+  <!-- Google Translate Integration -->
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
