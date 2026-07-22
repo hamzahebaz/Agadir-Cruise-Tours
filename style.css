@@ -2435,6 +2435,7 @@ select.form-control {
   font-family: var(--font-display);
   font-weight: 800;
   margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 .showcase-divider {
