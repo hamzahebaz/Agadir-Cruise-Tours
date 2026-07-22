@@ -1892,6 +1892,7 @@ select.form-control {
   font-size: 1.75rem;
   font-family: var(--font-display);
   margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 .promo-card-content p {
