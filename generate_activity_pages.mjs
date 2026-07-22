@@ -76,7 +76,7 @@ function getTemplate(activity) {
   <link rel="stylesheet" href="../../style.css">
   
   <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.415.0/dist/umd/lucide.min.js"></script>
 
   <!-- Schema.org JSON-LD Markup -->
   <script type="application/ld+json">
