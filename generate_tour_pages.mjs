@@ -70,16 +70,16 @@ function getTemplate(tour) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/webp" href="../../favicon.webp">
-  <title>${tour.title} - Agadir Shore Excursions</title>
+  <title>${tour.title} | Agadir Shore Excursion from Cruise Port</title>
   
   <!-- SEO Meta Tags -->
   <meta name="description" content="${tour.description}">
-  <meta name="keywords" content="${tour.title}, Agadir shore excursions, cruise port tours, Agadir excursions, private tours Agadir">
+  <meta name="keywords" content="${tour.title}, Agadir shore excursions, cruise port tours, Agadir private excursions, custom day trips Agadir, Morocco cruise tours, best excursions from Agadir port">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://agadircruisetours.com/tour/${tour.slug}/">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="${tour.title} - Agadir Cruise Tours">
+  <meta property="og:title" content="${tour.title} | Agadir Shore Excursion from Cruise Port">
   <meta property="og:description" content="${tour.description}">
   <meta property="og:image" content="https://agadircruisetours.com/${tour.image}">
   <meta property="og:url" content="https://agadircruisetours.com/tour/${tour.slug}/">

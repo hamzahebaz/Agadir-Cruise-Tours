@@ -69,16 +69,16 @@ function getTemplate(activity) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/webp" href="../../favicon.webp">
-  <title>${activity.title} - Agadir Activities</title>
+  <title>${activity.title} | Agadir Local Activity & Experience</title>
   
   <!-- SEO Meta Tags -->
   <meta name="description" content="${activity.description}">
-  <meta name="keywords" content="${activity.title}, Agadir activities, things to do in Agadir, camel ride Agadir, hammam Agadir, quad adventure Agadir">
+  <meta name="keywords" content="${activity.title}, Agadir activities, things to do in Agadir, camel ride Agadir, hammam Agadir, quad adventure Agadir, Morocco local experience, Agadir excursions">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://agadircruisetours.com/activity/${activity.slug}/">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="${activity.title} - Agadir Cruise Tours">
+  <meta property="og:title" content="${activity.title} | Agadir Local Activity & Experience">
   <meta property="og:description" content="${activity.description}">
   <meta property="og:image" content="https://agadircruisetours.com/${activity.image}">
   <meta property="og:url" content="https://agadircruisetours.com/activity/${activity.slug}/">
