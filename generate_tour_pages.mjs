@@ -30,9 +30,9 @@ function getTemplate(tour) {
       </div>
     ` : '';
     return `
-      <div class="gallery-thumb-item\${idx === 0 ? ' active' : ''}" data-index="\${idx}">
-        <img src="../../\${img}" alt="\${tour.title} Thumbnail \${idx + 1}" loading="lazy">
-        \${viewMoreOverlay}
+      <div class="gallery-thumb-item${idx === 0 ? ' active' : ''}" data-index="${idx}">
+        <img src="../../${img}" alt="${tour.title} Thumbnail ${idx + 1}" loading="lazy">
+        ${viewMoreOverlay}
       </div>
     `;
   }).join('\n');
@@ -248,7 +248,7 @@ function getTemplate(tour) {
                 </button>
               </div>
               <div class="tour-gallery-thumbs" id="gallery-thumbs">
-                \${thumbsHTML}
+                ${thumbsHTML}
               </div>
             </div>
           </div>

@@ -30,9 +30,9 @@ function getTemplate(activity) {
       </div>
     ` : '';
     return `
-      <div class="gallery-thumb-item\${idx === 0 ? ' active' : ''}" data-index="\${idx}">
-        <img src="../../\${img}" alt="\${activity.title} Thumbnail \${idx + 1}" loading="lazy">
-        \${viewMoreOverlay}
+      <div class="gallery-thumb-item${idx === 0 ? ' active' : ''}" data-index="${idx}">
+        <img src="../../${img}" alt="${activity.title} Thumbnail ${idx + 1}" loading="lazy">
+        ${viewMoreOverlay}
       </div>
     `;
   }).join('\n');
@@ -247,7 +247,7 @@ function getTemplate(activity) {
                 </button>
               </div>
               <div class="tour-gallery-thumbs" id="gallery-thumbs">
-                \${thumbsHTML}
+                ${thumbsHTML}
               </div>
             </div>
           </div>
